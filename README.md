@@ -14,22 +14,30 @@ File>New File and select 'RMarkdown'
 
 From here you can now load any one of the templates by selecting 
 RMarkdown>From Template and selecting any one of the templates under 'DocRR'.
+
+
 ![](rmarkdown2.bmp)
 
 
 
 Select the template you want to load, give it a name and save it. 
+
+
 ![](rmarkdown3.bmp)
 
 
 
 Important to note here is that when you save your file a folder structure for your file is automatically made. This is because the templates have some extra files they are dependant on in order to compile.
+
+
 ![](rmarkdown4.bmp)
 
 
 
 You've now got a template for producing a pdf report to begin working on.
 Press the knit button to have a look at what it produces. 
+
+
 ![](rmarkdown5.bmp)
 
 
