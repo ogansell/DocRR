@@ -18,4 +18,5 @@ Imports: bookdown,
     htmltools,
     webshot,
     tidyr,
-    DT
+    DT,
+    magrittr
