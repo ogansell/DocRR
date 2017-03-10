@@ -6,7 +6,11 @@ In order for PDF output to work you need to make sure you have a LATEX distribut
 
 ##Installing the package
 
-Install using ``devtools::install_github('ogansell/DocRR')``.
+First off install the ``devtools`` package if you haven't already.
+
+``install.packages("devtools")``
+
+Now install the ``DocRR`` package using ``devtools::install_github('ogansell/DocRR')``.
 
 ##Creating a template in RStudio
 
