@@ -53,7 +53,7 @@ Press the knit button to have a look at what it produces.
 If you're not using RStudio it's still easy to use these templates.
 
 
-To create a new document use ``rmarkdown::draft("docarticletest.Rmd", template = "doc_article", package = "DocRR")``.
+To create a new document use ``rmarkdown::draft("my_article.Rmd", template = "doc_article", package = "DocRR")``.
 
-To compile use``rmarkdown::draft("my_article.Rmd", template = "doc_article", package = "DocRR")``.
+To compile use``rmarkdown::render("my_article/my_article.Rmd", template = "doc_article", package = "DocRR")``.
 
