@@ -44,7 +44,7 @@ You've now got a template for producing a pdf report to begin working on.
 Press the knit button to have a look at what it produces. 
 
 
-![](rmarkdown5.bmp)
+![](rmarkdown6.bmp)
 
 
 ##Creating a template outside of RStudio
