@@ -76,7 +76,7 @@ Probably time for a table. Table \@ref(tab:iris) shows some information that has
 knitr::kable(head(iris, 15), caption = 'A table of the first 15 rows of the iris data.')
 ```
 
-The package DT is really handy for complex tables with lots of information. It is also designed for the internet. Table \@ref(#tab:irisDT) is an example of a DT table.
+The package DT is really handy for complex tables with lots of information. It is also designed for the internet. Table \@ref(tab:#irisDT) is an example of a DT table.
 
 ```{r irisDT, warning=FALSE,message=FALSE,echo=FALSE}
 
