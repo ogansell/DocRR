@@ -33,11 +33,10 @@ Press the knit button to have a look at what it produces.
 ![](rmarkdown5.bmp)
 
 
-If you're not using RSStudio it's still easy to use these templates.
+If you're not using RStudio it's still easy to use these templates.
 
 
 To create a new document use ``rmarkdown::draft("docarticletest.Rmd", template = "doc_article", package = "DocRR")``.
 
-
-``rmarkdown::draft("my_article.Rmd", template = "doc_article", package = "DocRR")``.
+To compile use``rmarkdown::draft("my_article.Rmd", template = "doc_article", package = "DocRR")``.
 
