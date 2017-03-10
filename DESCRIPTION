@@ -11,6 +11,7 @@ Depends: R (>= 2.2),
     knitr,
     htmlwidgets,
     webshot,
+    rmarkdown,
     tidyr
 License: What license is it under?
 Encoding: UTF-8
