@@ -1,6 +1,6 @@
 # DocRR
 
-This repository contains a series of templates for creating HTML and PDF documents using the style themes employed by NZ Department of Conservation (DOC).
+This repository contains a series of templates for creating HTML and PDF documents in rmarkdown using the style themes employed by NZ Department of Conservation (DOC).
 
 In order for PDF output to work you need to make sure you have a LATEX distribution installed. [MIKTEX](https://miktex.org/) is the most common distribution to use.
 
@@ -48,7 +48,7 @@ You've now got a template for producing a pdf report to begin working on.
 Press the knit button to have a look at what it produces. 
 
 
-![](rmarkdown7.bmp)
+![](rmarkdown8.bmp)
 
 
 ##Creating a template outside of RStudio
