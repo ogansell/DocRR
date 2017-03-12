@@ -6,7 +6,11 @@ In order for PDF output to work you need to make sure you have a LATEX distribut
 
 ##Installing the package
 
-Install using ``devtools::install_github('ogansell/DocRR')``.
+First off install the ``devtools`` package if you haven't already.
+
+``install.packages("devtools")``
+
+Now install the ``DocRR`` package using ``devtools::install_github('ogansell/DocRR')``.
 
 ##Creating a template in RStudio
 
@@ -53,7 +57,7 @@ Press the knit button to have a look at what it produces.
 If you're not using RStudio it's still easy to use these templates.
 
 
-To create a new document use ``rmarkdown::draft("docarticletest.Rmd", template = "doc_article", package = "DocRR")``.
+To create a new document use ``rmarkdown::draft("my_article.Rmd", template = "doc_article", package = "DocRR")``.
 
-To compile use``rmarkdown::draft("my_article.Rmd", template = "doc_article", package = "DocRR")``.
+To compile use``rmarkdown::render("my_article/my_article.Rmd", template = "doc_article", package = "DocRR")``.
 
