@@ -3,8 +3,7 @@ Title: Templates for reproducible reporting
 Version: 0.0.0.9000
 Authors@R: person("Ollie", "Gansell", email = "ogansell@doc.govt.nz", role = c("aut", "cre"))
 Description: This package contains rmarkdown templates for creating reproducible reports in pdf and html output.
-Depends: R (>= 2.2),
-    webshot
+Depends: R (>= 2.2)
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true
@@ -20,4 +19,5 @@ Imports: bookdown,
     webshot,
     tidyr,
     DT,
-    magrittr
+    magrittr, 
+    webshot
