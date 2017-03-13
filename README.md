@@ -61,7 +61,7 @@ When making HTML pages a common intermediate step is to 'knit' your document to 
 If you're not using RStudio it's still easy to use these templates.
 
 
-To create a new document use ``rmarkdown::draft("my_article.Rmd", template = "doc_article", package = "DocRR")``.
+To create a new document use ``rmarkdown::draft("my_article.Rmd", template = "docarticle", package = "DocRR")``.
 
-To compile use``rmarkdown::render("my_article/my_article.Rmd", template = "doc_article", package = "DocRR")``.
+To compile use``rmarkdown::render("my_article/my_article.Rmd")``.
 
