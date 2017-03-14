@@ -14,7 +14,7 @@ csl: "`r paste(as.character(system.file('csl', 'elsevier-harvard.csl', package =
 header-includes:
 #--------------------Define color for use here-----------------#
 - \newcommand{\mycolor}{\color{Lake}}  #Define color for use here
-- \ThisULCornerWallPaper{1}{"`r DocRR::Lake()`"}
+- \ThisULCornerWallPaper{1}{{`r DocRR::Lake()`}}
 #-----------------------END-------------------------------------#
 output:
 #------------If wanting word  or html  versions uncomment either one below-----#
