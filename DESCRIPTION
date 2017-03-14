@@ -20,4 +20,5 @@ Imports: bookdown,
     tidyr,
     DT,
     magrittr, 
-    webshot
+    webshot,
+    rprojroot
