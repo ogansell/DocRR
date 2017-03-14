@@ -12,20 +12,21 @@ bibliography: references.bib
 csl: "`r paste(as.character(system.file('csl', 'elsevier-harvard.csl', package = 'DocRR')))`"
 #This section contains raw LATEX code and shouldn't be altered
 header-includes:
-#--------------Define color for use here------------------------#
+#--------------------Define color for use here-----------------#
 - \newcommand{\mycolor}{\color{Lake}}  #Define color for use here
-- \ThisULCornerWallPaper{1}{{`r DocRR::Lake()`}}
+- \ThisULCornerWallPaper{1}{"`r DocRR::Lake()`"}
+#-----------------------END-------------------------------------#
 output:
-#------------If wanting word  or html  versions uncomment either one below--------#
+#------------If wanting word  or html  versions uncomment either one below-----#
   # word_document: default 
   # html_document: default
 #-------Make sure to comment out everything below if using word or html above-----#
-  pdf_document:
-    keep_tex: false #Only have true if you want to keep the latex file produced
-    latex_engine: xelatex #Has to be xelatex to use Archer fonts
-    template: doc_article.tex #Don't change this!!!
-    toc: false  #include table of contents
-    toc_depth: 1 #specify the depth of the table of contents
+  bookdown::pdf_document2:
+    keep_tex: no
+    latex_engine: xelatex
+    template: doc_article.tex
+    toc: no  #include table of contents
+    toc_depth: 2 #specify the depth of the table of contents
     number_sections: true #specify whether or not to add numbered sections
 ---
 
@@ -46,23 +47,25 @@ summary(cars)
 
 ## Including Plots{-}
 
-You can also embed plots, for example:
+You can also embed plots, for example Figure \@ref(fig:pressure):
 
-```{r pressure, echo=FALSE}
+```{r pressure, echo=FALSE, fig.cap="Something o do with change in pressure"}
 plot(pressure)
 ```
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
 
 ### Add sub headings using this notation{-}
+
 References some stuff and see how it looks [@lee2005biodiversity]
 
 \newpage
 \blandscape
-If you want to have some pages in landscape then use this notation.
+If you want to use landscape then use this notation
 \elandscape
 \newpage
 
 ##References{-}
+
 
 
