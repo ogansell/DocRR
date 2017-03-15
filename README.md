@@ -69,17 +69,11 @@ Wrapper functions have been made to make it easy to load a template.
 There is one function for each template:
 
 ``DocRR::article("myarticle.Rmd")``
-
 ``DocRR::article_book("myarticle.Rmd")``
-
 ``DocRR::report("myreport.Rmd")``
-
 ``DocRR::report_book("myreport.Rmd")``
-
 ``DocRR::plain_html("myplainwebpage.Rmd")``
-
 ``DocRR::tab_html("mytabbedwebpage.Rmd")``
-
 ``DocRR::indicator_html("myindicatorfactsheet.Rmd")``
 
 To compile use your document use ``rmarkdown::render("my_article/my_article.Rmd")``. Remember that you need to point it to the right directory.
