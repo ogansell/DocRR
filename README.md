@@ -60,8 +60,24 @@ When making HTML pages a common intermediate step is to 'knit' your document to 
 
 If you're not using RStudio it's still easy to use these templates.
 
+Wrapper functions have been made to make it easy to load a template.
 
-To create a new document use ``rmarkdown::draft("my_article.Rmd", template = "docarticle", package = "DocRR")``.
+There is one function for each template:
 
-To compile use``rmarkdown::render("my_article/my_article.Rmd")``.
+``DocRR::article("myarticle.Rmd")``
+
+``DocRR::article_book("myarticle.Rmd")``
+
+``DocRR::report("myreport.Rmd")``
+
+``DocRR::report_book("myreport.Rmd")``
+
+``DocRR::plain_html("myplainwebpage.Rmd")``
+
+``DocRR::tab_html("mytabbedwebpage.Rmd")``
+
+``DocRR::indicator_html("myindicatorfactsheet.Rmd")``
+
+
+To compile use your document use ``rmarkdown::render("my_article/my_article.Rmd")``. Remember that you need to point it to the right directory.
 
