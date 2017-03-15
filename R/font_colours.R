@@ -28,3 +28,8 @@ font_Kiwi <- function(x){
 font_Honey <- function(x){
   paste(as.character("#B5A80C;"))
 }
+
+#' @export
+font_Greyscale <- function(x){
+  paste(as.character("#808080;"))
+}
