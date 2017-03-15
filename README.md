@@ -6,6 +6,7 @@ In order for PDF output to work you need to make sure you have a LATEX distribut
 
 ##Installing the package
 
+
 First off install the ``devtools`` package if you haven't already.
 
 ``install.packages("devtools")``
@@ -13,6 +14,7 @@ First off install the ``devtools`` package if you haven't already.
 Now install the ``DocRR`` package using ``devtools::install_github('ogansell/DocRR')``.
 
 ##Creating a template in RStudio
+
 
 RStudio supports these templates natively. 
 
@@ -52,10 +54,12 @@ Press the knit button to have a look at what it produces.
 
 ##After installation
 
+
 When making HTML pages a common intermediate step is to 'knit' your document to '.docx' format. This makes it easy to send to reviewers to get their input. The [webshot](https://cran.r-project.org/web/packages/webshot/vignettes/intro.html) is useful in this instance as it includes a screenshot of any htmlwidgets used in the knitted .docx file. It require installation of the PhantomJS software. This causes installation of the ``DocRR`` package to fail on older installations of R so it is recommended to install this manually after installing ``DocRR``. Do this by running the code ``webshot::install_phantomjs()``.
 
 
 ##Creating a template outside of RStudio
+
 
 
 If you're not using RStudio it's still easy to use these templates.
