@@ -4,7 +4,7 @@ This repository contains a series of templates for creating HTML and PDF documen
 
 In order for PDF output to work you need to make sure you have a LATEX distribution installed. [MIKTEX](https://miktex.org/) is the most common distribution to use.
 
-#Installing the package
+##Installing the package
 
 
 First off install the ``devtools`` package if you haven't already.
@@ -13,7 +13,7 @@ First off install the ``devtools`` package if you haven't already.
 
 Now install the ``DocRR`` package using ``devtools::install_github('ogansell/DocRR')``.
 
-#Creating a template in RStudio
+##Creating a template in RStudio
 
 
 RStudio supports these templates natively. 
@@ -52,13 +52,13 @@ Press the knit button to have a look at what it produces.
 
 ![](rmarkdown8.bmp)
 
-#After installation
+##After installation
 
 
 When making HTML pages a common intermediate step is to 'knit' your document to '.docx' format. This makes it easy to send to reviewers to get their input. The [webshot](https://cran.r-project.org/web/packages/webshot/vignettes/intro.html) is useful in this instance as it includes a screenshot of any htmlwidgets used in the knitted .docx file. It require installation of the PhantomJS software. This causes installation of the ``DocRR`` package to fail on older installations of R so it is recommended to install this manually after installing ``DocRR``. Do this by running the code ``webshot::install_phantomjs()``.
 
 
-#Creating a template outside of RStudio
+##Creating a template outside of RStudio
 
 
 
@@ -81,7 +81,6 @@ There is one function for each template:
 ``DocRR::tab_html("mytabbedwebpage.Rmd")``
 
 ``DocRR::indicator_html("myindicatorfactsheet.Rmd")``
-
 
 To compile use your document use ``rmarkdown::render("my_article/my_article.Rmd")``. Remember that you need to point it to the right directory.
 
