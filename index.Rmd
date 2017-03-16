@@ -100,7 +100,9 @@ If you're not using RStudio it's still easy to use these templates.
 
 Wrapper functions have been made to make it easy to load a template.
 
-There is one function for each template:
+There is one function for each template. The document names are examples only, you can name the ``.Rmd`` file whatever you like.
+
+Functions below:
 
 ``DocRR::article("myarticle.Rmd")``
 ``DocRR::article_book("myarticle.Rmd")``
@@ -216,5 +218,144 @@ Changing colours in PDF or web output normally requires some working knowledge o
 <td>``DocRR::font_Greyscale``</td>
 </tr>
 </table>
+
+###PDF output
+
+####PDF output
+
+
+
+
+###HTML output
+
+####HTML output
+
+###Markdown basics
+
+####Markdown basics
+
+####Writing text
+
+An advantage of markdown is that it is a really simple typesetting language. The structure of it is really simple.
+
+To make stuff **bold** use 2 '**' either side of your text
+
+To make _italics_ use '_' either side of the text you want _italicized_
+
+Most of the standard things involved in writing a report can be found [here](http://www.rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf):
+
+<iframe src="http://www.rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf", width = 595px, height = 695px>allowfullscreen</iframe>
+
+####Tables
+
+Making and displaying tables in rmarkdown is really easy. If working with data and wanting to display a table we can use the ``kable`` function in ``R`` like this:
+
+```{r kable table, warning=FALSE, message=FALSE}
+require(knitr)#Need to load the knitr library
+
+kable(head(iris,10)) #Display the first 10 rows of the dataset
+
+```
+
+``kable`` works really well with HTML or PDF output and for simple tables.It also works really well in this type of workflow where you have your analysis in the same workflow and you need to output a summary table.
+
+If displaying solely in HTML the ``DT`` library has some good options for displaying more complex data.
+
+```{r DT table}
+require(DT)
+datatable(iris)
+
+```
+
+You'll see that ``DT`` tables have more options for filtering and searching data. This can be helpful if you have a more complicated table you want to show. ``DT`` tables don't work if you want a PDF report.
+
+You can also generate a table in straight markdown.
+
+This looks like this:
+
+```{}
+| Sepal.Length | Sepal.Width | Petal.Length | Petal.Width | Species |
+|--------------|-------------|--------------|-------------|---------|
+| 5.1          | 3.5         | 1.4          | 0.2         | setosa  |
+| 4.9          | 3.0         | 1.4          | 0.2         | setosa  |
+| 4.7          | 3.2         | 1.3          | 0.2         | setosa  |
+| 4.6          | 3.1         | 1.5          | 0.2         | setosa  |
+| 5.0          | 3.6         | 1.4          | 0.2         | setosa  |
+| 5.4          | 3.9         | 1.7          | 0.4         | setosa  |
+| 4.6          | 3.4         | 1.4          | 0.3         | setosa  |
+| 5.0          | 3.4         | 1.5          | 0.2         | setosa  |
+| 4.4          | 2.9         | 1.4          | 0.2         | setosa  |
+| 4.9          | 3.1         | 1.5          | 0.1         | setosa  |
+```
+
+But renders in HTML like this:
+
+| Sepal.Length | Sepal.Width | Petal.Length | Petal.Width | Species |
+|--------------|-------------|--------------|-------------|---------|
+| 5.1          | 3.5         | 1.4          | 0.2         | setosa  |
+| 4.9          | 3.0         | 1.4          | 0.2         | setosa  |
+| 4.7          | 3.2         | 1.3          | 0.2         | setosa  |
+| 4.6          | 3.1         | 1.5          | 0.2         | setosa  |
+| 5.0          | 3.6         | 1.4          | 0.2         | setosa  |
+| 5.4          | 3.9         | 1.7          | 0.4         | setosa  |
+| 4.6          | 3.4         | 1.4          | 0.3         | setosa  |
+| 5.0          | 3.4         | 1.5          | 0.2         | setosa  |
+| 4.4          | 2.9         | 1.4          | 0.2         | setosa  |
+| 4.9          | 3.1         | 1.5          | 0.1         | setosa  |
+
+The website [http://www.tablesgenerator.com/](http://www.tablesgenerator.com/) is really useful for converting tables between different formats. The advantage of using markdown format is that it gives more flexibility for situations where you may need to to more editing inside a table, such as adding footnotes which you would do like this:
+
+```{}
+| Sepal.Length [^1] | Sepal.Width | Petal.Length | Petal.Width | Species |
+|--------------|-------------|--------------|-------------|---------|
+| 5.1          | 3.5         | 1.4          | 0.2         | setosa  |
+| 4.9          | 3.0         | 1.4          | 0.2         | setosa  |
+| 4.7          | 3.2         | 1.3          | 0.2         | setosa  |
+| 4.6          | 3.1         | 1.5          | 0.2         | setosa  |
+| 5.0          | 3.6         | 1.4          | 0.2         | setosa  |
+| 5.4          | 3.9         | 1.7          | 0.4         | setosa  |
+| 4.6          | 3.4         | 1.4          | 0.3         | setosa  |
+| 5.0          | 3.4         | 1.5          | 0.2         | setosa  |
+| 4.4          | 2.9         | 1.4          | 0.2         | setosa  |
+| 4.9          | 3.1         | 1.5          | 0.1         | setosa  |
+Table: A table about some sort of flower
+
+[^1]: A footnote about Sepal length
+```
+
+Which looks like this:
+
+
+| Sepal.Length [^1] | Sepal.Width | Petal.Length | Petal.Width | Species |
+|--------------|-------------|--------------|-------------|---------|
+| 5.1          | 3.5         | 1.4          | 0.2         | setosa  |
+| 4.9          | 3.0         | 1.4          | 0.2         | setosa  |
+| 4.7          | 3.2         | 1.3          | 0.2         | setosa  |
+| 4.6          | 3.1         | 1.5          | 0.2         | setosa  |
+| 5.0          | 3.6         | 1.4          | 0.2         | setosa  |
+| 5.4          | 3.9         | 1.7          | 0.4         | setosa  |
+| 4.6          | 3.4         | 1.4          | 0.3         | setosa  |
+| 5.0          | 3.4         | 1.5          | 0.2         | setosa  |
+| 4.4          | 2.9         | 1.4          | 0.2         | setosa  |
+| 4.9          | 3.1         | 1.5          | 0.1         | setosa  |
+Table: A table about some sort of flower
+
+
+[^1]: A footnote about Sepal length
+
+
+
+####Figures
+
+When writing a report in Microsoft Word or similar and you want to display graphs and figures you have to generally copy and paste plots manually into your document. This lends itself to making mistakes and becomes tedious when your data/presentation changes. 
+
+Using ``rmarkdown``, ``R`` (or other language) and ``knitr`` it is really easy to place your figure in your work exactly where you want it to go. If your data changes then it is as simple as ensuring your new data is called to update your figure.Figure \@ref(fig:flowers) tells us simple things about the ``iris`` dataset.
+
+```{r flowers, warning=FALSE, message=FALSE, fig.cap= 'Something to do with flowers', fig.height=3,fig.width=5}
+
+plot(iris)
+
+```
+
 
 
