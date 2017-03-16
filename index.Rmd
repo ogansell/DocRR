@@ -23,8 +23,8 @@ csl: http://www.doc.govt.nz/system/reporting/elsevier-harvard.csl
         h3 {color: `r DocRR::font_Lake()`}
         h4 {font-size: 1.8em;color: `r DocRR::font_Lake()`}
         th {background-color : `r DocRR::font_Lake()`}
-        body {max-width: 795px;}
-        ul.nav.nav-tabs{width: 795px;}
+        body {max-width: 895px;}
+        ul.nav.nav-tabs{width: 895px;}
 </style>
 
 
@@ -41,7 +41,7 @@ This repository contains a series of templates for creating HTML and PDF documen
 ####Getting started
 
 
-In order for PDF output to work you need to make sure you have a LATEX distribution installed. [MIKTEX](https://miktex.org/) is the most common distribution to use.
+In order for PDF output to work you need to make sure you have a LaTeX distribution installed. [MIKTEX](https://miktex.org/) is the most common distribution to use.
 
 ####Installing the package
 
@@ -91,12 +91,10 @@ Press the knit button to have a look at what it produces.
 ####After installation
 
 
-When making HTML pages a common intermediate step is to 'knit' your document to '.docx' format. This makes it easy to send to reviewers to get their input. The [webshot](https://cran.r-project.org/web/packages/webshot/vignettes/intro.html) is useful in this instance as it includes a screenshot of any htmlwidgets used in the knitted .docx file. It require installation of the PhantomJS software. This causes installation of the ``DocRR`` package to fail on older installations of R so it is recommended to install this manually after installing ``DocRR``. Do this by running the code ``webshot::install_phantomjs()``.
+When making HTML pages a common intermediate step is to ``knit`` your document to ``.docx`` format. This makes it easy to send to reviewers to get their input. The [webshot](https://cran.r-project.org/web/packages/webshot/vignettes/intro.html) package is useful in this instance as it includes a screenshot of any htmlwidgets used in the knitted ``.docx file``. It require installation of the PhantomJS software. This causes installation of the ``DocRR`` package to fail on older installations of ``R`` so it is recommended to install this manually after installing ``DocRR``. Do this by running the code ``webshot::install_phantomjs()``.
 
 
 ####Creating a template outside of RStudio
-
-
 
 If you're not using RStudio it's still easy to use these templates.
 
@@ -112,11 +110,13 @@ There is one function for each template:
 ``DocRR::tab_html("mytabbedwebpage.Rmd")``
 ``DocRR::indicator_html("myindicatorfactsheet.Rmd")``
 
-To compile your document use ``rmarkdown::render("my_article/my_article.Rmd")``. Remember that you need to point it to the right directory.
+To compile your document use ``rmarkdown::render("my_article/my_article.Rmd")``. Remember that you need to point it to the right directory, which means you need to include the folder which was automatically created to host your ``.Rmd`` file.
 
 ####Extra information
 
 You can now start making documents using these templates. It's important to remember that each template has been designed for a specific output (i.e. pdf articles or reports, plain webpages, web pages with tabbed layout or standardised pages for reporting on biodiversity indicators). Therefore the ``docarticle`` or ``docreport`` templates won't work for making webpages and web templates won't work for generating pdf's. Saying that, all of the templates will output to ``.docx`` (word format) provided some of the ``yaml`` metadata is altered (we'll cover this later). This is useful for giving reviewers who aren't familiar with ``R`` or ``rmarkdown`` a version of your document for editing and making comments. 
+
+You'll see there are 2 versions of the article and report pdf templates (i.e. ``docarticle`` and ``docarticle_bookdown``). The ``bookdown`` package adds the extra utility of cross referencing tables and figures in text. This is especially handy for scientific/technical publications with lots of tables and graphs, but is also useful for images etc. Using the ``bookdown`` templates seems to cause some problems when knitting documents on some computers, so article and report templates have been included which do not use the ``bookdown`` package. Guidance on how to cross-reference using ``bookdown`` has been provided in each of the templates.
 
 
 ###Changing colours
