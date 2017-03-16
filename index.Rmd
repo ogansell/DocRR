@@ -2,20 +2,44 @@
 output:
   #bookdown::word_document2: #Use this if you need to output into word. The word document will contain webshots of any html/javascript content
   bookdown::html_document2:
+    css: styles.css
     highlight: null
-    keep_md: yes
+    keep_md: no
     self_contained: no #Controls whether document has dependencies or not. Has implications for file size and speed of loading
     number_sections: false #specify whether or not to add numbered sections
 bibliography: references.bib
 csl: http://www.doc.govt.nz/system/reporting/elsevier-harvard.csl 
 ---
-# DocRR{.tabset .tabset-fade} 
+<!--Customise header here-->
+<header id="header">
+<img src=`r DocRR::Lake_web()` class="img-responsive" alt="" />
+<h1>DocRR</h1>
+</header>
+<h1 class="h1sub">Making reproducible reports in NZ Department of Conservation (DOC) approved styles</h1>
+
+<!--Add some custom css to control font and table header colour or other style components where needed-->
+<style> 
+        h2 {color: `r DocRR::font_Lake()`}
+        h3 {color: `r DocRR::font_Lake()`}
+        h4 {font-size: 1.8em;color: `r DocRR::font_Lake()`}
+        th {background-color : `r DocRR::font_Lake()`}
+        body {max-width: 795px;}
+        ul.nav.nav-tabs{width: 795px;}
+</style>
+
+
+
+##{.tabset .tabset-fade} 
+
 
 This repository contains a series of templates for creating HTML and PDF documents in rmarkdown using the style themes employed by NZ Department of Conservation (DOC).
 
 
 
-##Getting started
+###Getting started
+
+####Getting started
+
 
 In order for PDF output to work you need to make sure you have a LATEX distribution installed. [MIKTEX](https://miktex.org/) is the most common distribution to use.
 
@@ -56,16 +80,13 @@ Select the template you want to load, give it a name and save it.
 
 Important to note here is that when you save your file a folder structure for your file is automatically made. This is because the templates have some extra files they are dependant on in order to compile.
 
-
-![](rmarkdown4.bmp)
-
+<img src="rmarkdown4.bmp" width="600" height="600" /></td>
 
 
 You've now got a template for producing a pdf report to begin working on.
 Press the knit button to have a look at what it produces. 
 
-
-![](rmarkdown8.bmp)
+<img src="rmarkdown8.bmp" width="600" height="600" /></td>
 
 ####After installation
 
@@ -98,7 +119,10 @@ To compile your document use ``rmarkdown::render("my_article/my_article.Rmd")``.
 You can now start making documents using these templates. It's important to remember that each template has been designed for a specific output (i.e. pdf articles or reports, plain webpages, web pages with tabbed layout or standardised pages for reporting on biodiversity indicators). Therefore the ``docarticle`` or ``docreport`` templates won't work for making webpages and web templates won't work for generating pdf's. Saying that, all of the templates will output to ``.docx`` (word format) provided some of the ``yaml`` metadata is altered (we'll cover this later). This is useful for giving reviewers who aren't familiar with ``R`` or ``rmarkdown`` a version of your document for editing and making comments. 
 
 
-##Changing colours
+###Changing colours
+
+####Changing colours
+
 
 The templates in this package have all of the style elements needed to adjust the colour of banners or fonts according to the DOC style guidelines. There are 7 different colours to use for banners at the top of the first page and for text headings.  
 
@@ -106,8 +130,8 @@ Changing colours in PDF or web output normally requires some working knowledge o
 
 <style type="text/css">
 .tg  {border-collapse:collapse;border-spacing:0;}
-.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
-.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+.tg td{font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+.tg th{font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
 .tg .tg-9hbo{font-weight:bold;vertical-align:top}
 .tg .tg-amwm{font-weight:bold;text-align:center;vertical-align:top}
 .tg .tg-yw4l{vertical-align:top}
@@ -129,7 +153,7 @@ Changing colours in PDF or web output normally requires some working knowledge o
 <td class="tg-amwm">Web font</td>
 </tr>
 <tr>
-<td><span style="color:#59118E"><h4>Alpine</h4></span>
+<td><span style="color:#59118E"><h5>Alpine</h5></span>
 
 <img src="inst/banners/Alpine.png" width="150" height="50" /></td>
 <td>``DocRR::Alpine``</td>
@@ -138,7 +162,7 @@ Changing colours in PDF or web output normally requires some working knowledge o
 <td>``DocRR::font_Alpine``</td>
 </tr>
 <tr>
-<td><span style="color:#008CB2"><h4>Lake</h4></span>
+<td><span style="color:#008CB2"><h5>Lake</h5></span>
 
 <img src="inst/banners/Lake.png" width="150" height="50" /></td>
 <td>``DocRR::Lake``</td>
@@ -147,7 +171,7 @@ Changing colours in PDF or web output normally requires some working knowledge o
 <td>``DocRR::font_Lake``</td>
 </tr>
 <tr>
-<td><span style="color:#E0219E"><h4>Sunset</h4></span>
+<td><span style="color:#E0219E"><h5>Sunset</h5></span>
 
 <img src="inst/banners/Sunset.png" width="150" height="50" /></td>
 <td>``DocRR::Sunset``</td>
@@ -156,7 +180,7 @@ Changing colours in PDF or web output normally requires some working knowledge o
 <td>``DocRR::font_Sunset``</td>
 </tr>
 <tr>
-<td><span style="color:#DD5900"><h4>Fauna</h4></span>
+<td><span style="color:#DD5900"><h5>Fauna</h5></span>
 
 <img src="inst/banners/Fauna.png" width="150" height="50" /> </td>
 <td>``DocRR::Fauna``</td>
@@ -165,7 +189,7 @@ Changing colours in PDF or web output normally requires some working knowledge o
 <td>``DocRR::font_Fauna``</td>
 </tr>
 <tr>
-<td><span style="color:#6D2C00"><h4>Kiwi</h4></span>
+<td><span style="color:#6D2C00"><h5>Kiwi</h5></span>
 
 <img src="inst/banners/Kiwi.png" width="150" height="50" /> </td>
 <td>``DocRR::Kiwi``</td>
@@ -174,7 +198,7 @@ Changing colours in PDF or web output normally requires some working knowledge o
 <td>``DocRR::font_Kiwi``</td>
 </tr>
 <tr>
-<td><span style="color:#B5A80C"><h4>Honey</h4></span>
+<td><span style="color:#B5A80C"><h5>Honey</h5></span>
 
 <img src="inst/banners/Honey.png" width="150" height="50" /></td>
 <td>``DocRR::Honey``</td>
@@ -183,7 +207,7 @@ Changing colours in PDF or web output normally requires some working knowledge o
 <td>``DocRR::font_Honey``</td>
 </tr>
 <tr>
-<td><span style="color:#808080"><h4>Greyscale</h4></span>
+<td><span style="color:#808080"><h5>Greyscale</h5></span>
 
 <img src="inst/banners/Greyscale.png" width="150" height="50" /></td>
 <td>``DocRR::Greyscale``</td>

@@ -51,6 +51,7 @@ h6 {
 }
 </style>
 
+<link rel="stylesheet" href="styles.css" type="text/css" />
 
 </head>
 
@@ -104,12 +105,34 @@ $(document).ready(function () {
 </div>
 
 
-<div id="docrr" class="section level1 tabset tabset-fade">
-<h1>DocRR</h1>
+<!--Customise header here-->
+<header id="header">
+<img src=http://www.doc.govt.nz/system/reporting/blue-banner.jpg class="img-responsive" alt="" />
+<h1>
+DocRR
+</h1>
+</header>
+<h1 class="h1sub">
+Making reproducible reports in NZ Department of Conservation (DOC) approved styles
+</h1>
+<!--Add some custom css to control font and table header colour or other style components where needed-->
+<style> 
+        h2 {color: #008CB2;}
+        h3 {color: #008CB2;}
+        h4 {font-size: 1.8em;color: #008CB2;}
+        th {background-color : #008CB2;}
+        body {max-width: 795px;}
+        ul.nav.nav-tabs{width: 795px;}
+</style>
+<div id="section" class="section level2 tabset tabset-fade">
+<h2></h2>
 <p>This repository contains a series of templates for creating HTML and PDF documents in rmarkdown using the style themes employed by NZ Department of Conservation (DOC).</p>
-<div id="getting-started" class="section level2">
-<h2>Getting started</h2>
+<div id="getting-started" class="section level3">
+<h3>Getting started</h3>
+<div id="getting-started-1" class="section level4">
+<h4>Getting started</h4>
 <p>In order for PDF output to work you need to make sure you have a LATEX distribution installed. <a href="https://miktex.org/">MIKTEX</a> is the most common distribution to use.</p>
+</div>
 <div id="installing-the-package" class="section level4">
 <h4>Installing the package</h4>
 <p>First off install the <code>devtools</code> package if you haven’t already.</p>
@@ -135,15 +158,11 @@ $(document).ready(function () {
 
 </div>
 <p>Important to note here is that when you save your file a folder structure for your file is automatically made. This is because the templates have some extra files they are dependant on in order to compile.</p>
-<div class="figure">
-<img src="rmarkdown4.bmp" />
-
-</div>
+<img src="rmarkdown4.bmp" width="600" height="600" />
+</td>
 <p>You’ve now got a template for producing a pdf report to begin working on. Press the knit button to have a look at what it produces.</p>
-<div class="figure">
-<img src="rmarkdown8.bmp" />
-
-</div>
+<img src="rmarkdown8.bmp" width="600" height="600" />
+</td>
 </div>
 <div id="after-installation" class="section level4">
 <h4>After installation</h4>
@@ -162,14 +181,16 @@ $(document).ready(function () {
 <p>You can now start making documents using these templates. It’s important to remember that each template has been designed for a specific output (i.e. pdf articles or reports, plain webpages, web pages with tabbed layout or standardised pages for reporting on biodiversity indicators). Therefore the <code>docarticle</code> or <code>docreport</code> templates won’t work for making webpages and web templates won’t work for generating pdf’s. Saying that, all of the templates will output to <code>.docx</code> (word format) provided some of the <code>yaml</code> metadata is altered (we’ll cover this later). This is useful for giving reviewers who aren’t familiar with <code>R</code> or <code>rmarkdown</code> a version of your document for editing and making comments.</p>
 </div>
 </div>
-<div id="changing-colours" class="section level2">
-<h2>Changing colours</h2>
+<div id="changing-colours" class="section level3">
+<h3>Changing colours</h3>
+<div id="changing-colours-1" class="section level4">
+<h4>Changing colours</h4>
 <p>The templates in this package have all of the style elements needed to adjust the colour of banners or fonts according to the DOC style guidelines. There are 7 different colours to use for banners at the top of the first page and for text headings.</p>
 <p>Changing colours in PDF or web output normally requires some working knowledge of LaTeX, HTML and CSS code. To make life easier for users of this package functions have been defined in <code>R</code> to allow the user to easily choose whatever colour is required for banners and fonts in both web and pdf output. The colours for banners and fonts are shown in the table below. Beside each colour you can see the function for the banners for pdf articles and reports and for webpages. There is also a function for specifying the colour of headings for webpages. A different approach is used for colour of headings for PDF output.</p>
 <style type="text/css">
 .tg  {border-collapse:collapse;border-spacing:0;}
-.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
-.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+.tg td{font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+.tg th{font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
 .tg .tg-9hbo{font-weight:bold;vertical-align:top}
 .tg .tg-amwm{font-weight:bold;text-align:center;vertical-align:top}
 .tg .tg-yw4l{vertical-align:top}
@@ -210,9 +231,9 @@ Web font
 <tr>
 <td>
 <span style="color:#59118E">
-<h4>
+<h5>
 Alpine
-</h4>
+</h5>
 <p></span></p>
 <img src="inst/banners/Alpine.png" width="150" height="50" />
 </td>
@@ -232,9 +253,9 @@ Alpine
 <tr>
 <td>
 <span style="color:#008CB2">
-<h4>
+<h5>
 Lake
-</h4>
+</h5>
 <p></span></p>
 <img src="inst/banners/Lake.png" width="150" height="50" />
 </td>
@@ -254,9 +275,9 @@ Lake
 <tr>
 <td>
 <span style="color:#E0219E">
-<h4>
+<h5>
 Sunset
-</h4>
+</h5>
 <p></span></p>
 <img src="inst/banners/Sunset.png" width="150" height="50" />
 </td>
@@ -276,9 +297,9 @@ Sunset
 <tr>
 <td>
 <span style="color:#DD5900">
-<h4>
+<h5>
 Fauna
-</h4>
+</h5>
 <p></span></p>
 <img src="inst/banners/Fauna.png" width="150" height="50" />
 </td>
@@ -298,9 +319,9 @@ Fauna
 <tr>
 <td>
 <span style="color:#6D2C00">
-<h4>
+<h5>
 Kiwi
-</h4>
+</h5>
 <p></span></p>
 <img src="inst/banners/Kiwi.png" width="150" height="50" />
 </td>
@@ -320,9 +341,9 @@ Kiwi
 <tr>
 <td>
 <span style="color:#B5A80C">
-<h4>
+<h5>
 Honey
-</h4>
+</h5>
 <p></span></p>
 <img src="inst/banners/Honey.png" width="150" height="50" />
 </td>
@@ -342,9 +363,9 @@ Honey
 <tr>
 <td>
 <span style="color:#808080">
-<h4>
+<h5>
 Greyscale
-</h4>
+</h5>
 <p></span></p>
 <img src="inst/banners/Greyscale.png" width="150" height="50" />
 </td>
@@ -362,6 +383,7 @@ Greyscale
 </td>
 </tr>
 </table>
+</div>
 </div>
 </div>
 
