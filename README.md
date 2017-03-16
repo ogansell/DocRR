@@ -87,14 +87,11 @@ To compile your document use ``rmarkdown::render("my_article/my_article.Rmd")``.
 You can now start making documents using these templates. It's important to remember that each template has been designed for a specific output (i.e. pdf articles or reports, plain webpages, web pages with tabbed layout or standardised pages for reporting on biodiversity indicators). Therefore the ``docarticle`` or ``docreport`` templates won't work for making webpages and web templates won't work for generating pdf's. Saying that, all of the templates will output to ``.docx`` (word format) provided some of the ``yaml`` metadata is altered (we'll cover this later). This is useful for giving reviewers who aren't familiar with ``R`` or ``rmarkdown`` a version of your document for editing and making comments. 
 
 
-##Working with this package
+##Changing colours
 
-The templates in this package have all of the style elements needed to adjust the colour of banners or fonts according to the DOC style guidelines. 
+The templates in this package have all of the style elements needed to adjust the colour of banners or fonts according to the DOC style guidelines. There are 7 different colours to use for banners at the top of the first page and for text headings.  
 
-Functions have been defined to allow the user to easily choose whatever colour is required for banners and fonts in both web and pdf output. 
-
-The banners and font colours are:
-
+Changing colours in PDF or web output normally requires some working knowledge of LaTeX, HTML and CSS code. To make life easier for users of this package functions have been defined in ``R`` to allow the user to easily choose whatever colour is required for banners and fonts in both web and pdf output. The colours for banners and fonts are shown in the table below. Beside each colour you can see the function for the banners for pdf articles and reports and for webpages. There is also a function for specifying the colour of headings for webpages. A different approach is used for colour of headings for PDF output.
 
 <style type="text/css">
 .tg  {border-collapse:collapse;border-spacing:0;}
