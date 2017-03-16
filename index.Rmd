@@ -32,7 +32,7 @@ csl: http://www.doc.govt.nz/system/reporting/elsevier-harvard.csl
 ##{.tabset .tabset-fade} 
 
 
-This repository contains a series of templates for creating HTML and PDF documents in rmarkdown using the style themes employed by NZ Department of Conservation (DOC).
+This repository contains a series of templates for creating HTML and PDF documents in ``rmarkdown`` using the style themes employed by NZ Department of Conservation (DOC).
 
 
 
@@ -41,7 +41,7 @@ This repository contains a series of templates for creating HTML and PDF documen
 ####Getting started
 
 
-In order for PDF output to work you need to make sure you have a LaTeX distribution installed. [MIKTEX](https://miktex.org/) is the most common distribution to use.
+In order for PDF output to work you need to make sure you have a LaTeX distribution installed. [MiKTEX](https://miktex.org/) is the most common distribution to use.
 
 ####Installing the package
 
@@ -64,7 +64,7 @@ File>New File and select 'RMarkdown'
 
 
 From here you can now load any one of the templates by selecting 
-RMarkdown>From Template and selecting any one of the templates under 'DocRR'.
+RMarkdown>From Template and selecting any one of the templates under ``DocRR``.
 
 
 ![](rmarkdown2.bmp)
@@ -132,8 +132,8 @@ Changing colours in PDF or web output normally requires some working knowledge o
 
 <style type="text/css">
 .tg  {border-collapse:collapse;border-spacing:0;}
-.tg td{font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
-.tg th{font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+.tg td{font-size:16px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+.tg th{font-size:16px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
 .tg .tg-9hbo{font-weight:bold;vertical-align:top}
 .tg .tg-amwm{font-weight:bold;text-align:center;vertical-align:top}
 .tg .tg-yw4l{vertical-align:top}
@@ -147,6 +147,7 @@ Changing colours in PDF or web output normally requires some working knowledge o
 <td class="tg-yw4l" rowspan="2"></td>
 <td class="tg-amwm" colspan="3">Banners</td>
 <td class="tg-amwm">Font</td>
+<caption>(\#tab:colours) DOC colour palette and functions for using in ``rmarkdown``. </caption>
 </tr>
 <tr>
 <td class="tg-amwm">PDF Article</td>
@@ -223,6 +224,49 @@ Changing colours in PDF or web output normally requires some working knowledge o
 
 ####PDF output
 
+Producing a PDF document from ``rmarkdown`` requires LaTeX be installed on your computer.As above, we recommend [MiKTEX](https://miktex.org/). Knitting to PDF can be a bit tricky at first. Behind the scenes a programme called ``pandoc`` is converting your ``rmarkdown`` document into a LaTeX document. LaTeX requires packages of it's own to do various tasks involved in producing the document. To get started you will need to ensure that MiKTEX can access it's package repository through the DOC proxy server.
+
+If you've got MiKTEX installed search for an open the ``MiKTEX Package Manager`` in your program files.
+
+<img src="miktex.jpg" width="750" height="750" />
+
+Click on ``Repository`` then ``Change Package Repository``.
+
+<img src="packagerepo.jpg" />
+
+Now click on ``Connection Settings``,
+
+<img src="connectionsettings.jpg" />
+
+Add a tick to 'Use a proxy server' and add ``webproxy`` to the ``Address:`` box and ``8080`` to the ``Port:`` box. If you're working off the DOC system then you'll need to untick 'Use a proxy server` for everything to work.
+
+Now you're ready to start working on a document templates. Follow the instructions under the [Getting started](#getting-started) to open one of the pdf templates ``docarticle`` or ``docreport`` or one of the ``bookdown`` versions. 
+
+Below is one of the templates to produce a pdf document. All of the text between the ``---`` lines is known as ``yaml``. This is essentially the document metadata and tells ``pandoc`` and therefore LaTeX everything it needs to know to produce the document. Don't worry too much about how it works.  
+
+In the ``yaml`` section you can see some notation such as ``\LARGE`` and ``\large``. This is LaTeX code to specify the size of the title and subtitle. You can modify the titles and subtitles inserted there provided the ``\LARGE`` is at the front with a space between it and the actual title. Figure \@ref(fig:fontsize) shows the LaTeX commands for different font sizes. These can be used for changing font sizes for the title and subtitle in the ``yaml`` section.
+
+<img src="pdf.jpg" />
+
+Now we can specify the colour of the banner and font headers for the document. ``Lake`` has been set as the default colour. Where we see this:
+````
+#This section contains raw LATEX code and shouldn't be altered
+header-includes:
+#--------------------Define color for use here-----------------#
+- \newcommand{\mycolor}{\color{Lake}}  #Define color for use here
+- \ThisULCornerWallPaper{1}{{r DocRR::Lake()}}
+#-----------------------END-------------------------------------#
+````
+We can see 2 LaTeX commands defined:
+``\newcommand{\mycolor}{\color{Lake}}`` controls the colour for the font headings and ``\ThisULCornerWallPaper{1}{{r DocRR::Lake()}}`` controls the colour of the banner. To change your colours simply add a different colour at ``\newcommand{\mycolor}{\color{----}}`` and ``\ThisULCornerWallPaper{1}{{r DocRR::----()}}`` from one of the colour options in Table \@ref(tab:colours). Make sure not to change any of the other text otherwise the commands will not run successfully.
+
+<img src="fontsize.png" />
+
+<caption>(\#fig:fontsize) LaTeX commands for changing font size.</caption>
+
+Now have a play with changing your colours and font size for titles and subtitles. If you have a really long title or subtitle it can mess with the formatting for author and date. The best approach to this is to change the font size of your title and subtitle as needed to control how it influences the overall layout.
+
+Add text re packages when knitting etc...
 
 
 
@@ -257,7 +301,7 @@ kable(head(iris,10)) #Display the first 10 rows of the dataset
 
 ```
 
-``kable`` works really well with HTML or PDF output and for simple tables.It also works really well in this type of workflow where you have your analysis in the same workflow and you need to output a summary table.
+``kable`` works really well with HTML or PDF output and for simple tables. It also works really well in this type of workflow where you have your analysis in the same workflow and you need to output a summary table.
 
 If displaying solely in HTML the ``DT`` library has some good options for displaying more complex data.
 
