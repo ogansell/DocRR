@@ -2,9 +2,11 @@
 
 This repository contains a series of templates for creating HTML and PDF documents in rmarkdown using the style themes employed by NZ Department of Conservation (DOC).
 
-In order for PDF output to work you need to make sure you have a LATEX distribution installed. [MIKTEX](https://miktex.org/) is the most common distribution to use.
+
 
 ##Getting started
+
+In order for PDF output to work you need to make sure you have a LATEX distribution installed. [MIKTEX](https://miktex.org/) is the most common distribution to use.
 
 ####Installing the package
 
