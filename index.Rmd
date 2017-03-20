@@ -48,14 +48,18 @@ In order for PDF output to work you need to make sure you have a LaTeX distribut
 
 First off install the ``devtools`` package if you haven't already.
 
+Paste the code into your ``R`` console and run it:
+
 ``install.packages("devtools")``
 
-Now install the ``DocRR`` package using ``devtools::install_github('ogansell/DocRR')``.
+Now install the ``DocRR`` package using: 
+
+``devtools::install_github('ogansell/DocRR')``.
 
 ####Creating a template in RStudio
 
 
-RStudio supports these templates natively. 
+RStudio supports these templates natively.You can download RStudio [here:](https://www.rstudio.com/products/rstudio/download/) 
 
 If using RStudio you can now load pre-made templates for outputting analysis and reporting in HTML or PDF format. To do this go to
 File>New File and select 'RMarkdown'
@@ -91,16 +95,18 @@ Press the knit button to have a look at what it produces.
 ####After installation
 
 
-When making HTML pages a common intermediate step is to ``knit`` your document to ``.docx`` format. This makes it easy to send to reviewers to get their input. The [webshot](https://cran.r-project.org/web/packages/webshot/vignettes/intro.html) package is useful in this instance as it includes a screenshot of any htmlwidgets used in the knitted ``.docx file``. It require installation of the PhantomJS software. This causes installation of the ``DocRR`` package to fail on older installations of ``R`` so it is recommended to install this manually after installing ``DocRR``. Do this by running the code ``webshot::install_phantomjs()``.
+When making HTML pages a common intermediate step is to ``knit`` your document to ``.docx`` format. This makes it easy to send to reviewers to get their input. The [webshot](https://cran.r-project.org/web/packages/webshot/vignettes/intro.html) package is useful in this instance as it includes a screenshot of any htmlwidgets used in the knitted ``.docx file``. It requires installation of the PhantomJS software. This causes installation of the ``DocRR`` package to fail on older installations of ``R`` so it is recommended to install this manually after installing ``DocRR``. Do this by running the code:
+
+``webshot::install_phantomjs()``.
 
 
 ####Creating a template outside of RStudio
 
-If you're not using RStudio it's still easy to use these templates.
+If you're not using RStudio it's still easy to use these templates in base ``R``.
 
 Wrapper functions have been made to make it easy to load a template.
 
-There is one function for each template. The document names are examples only, you can name the ``.Rmd`` file whatever you like.
+There is one function for each template. The document names are examples only, you can name the ``".Rmd"`` file whatever you like.
 
 Functions below:
 
@@ -112,13 +118,17 @@ Functions below:
 ``DocRR::tab_html("mytabbedwebpage.Rmd")``
 ``DocRR::indicator_html("myindicatorfactsheet.Rmd")``
 
-To compile your document use ``rmarkdown::render("my_article/my_article.Rmd")``. Remember that you need to point it to the right directory, which means you need to include the folder which was automatically created to host your ``.Rmd`` file.
+To compile your document use: 
+
+``rmarkdown::render("my_article/my_article.Rmd")``. 
+
+Remember that you need to point it to the right directory, which means you need to include the folder which was automatically created to host your ``".Rmd"`` file.
 
 ####Extra information
 
 You can now start making documents using these templates. It's important to remember that each template has been designed for a specific output (i.e. pdf articles or reports, plain webpages, web pages with tabbed layout or standardised pages for reporting on biodiversity indicators). Therefore the ``docarticle`` or ``docreport`` templates won't work for making webpages and web templates won't work for generating pdf's. Saying that, all of the templates will output to ``.docx`` (word format) provided some of the ``yaml`` metadata is altered (we'll cover this later). This is useful for giving reviewers who aren't familiar with ``R`` or ``rmarkdown`` a version of your document for editing and making comments. 
 
-You'll see there are 2 versions of the article and report pdf templates (i.e. ``docarticle`` and ``docarticle_bookdown``). The ``bookdown`` package adds the extra utility of cross referencing tables and figures in text. This is especially handy for scientific/technical publications with lots of tables and graphs, but is also useful for images etc. Using the ``bookdown`` templates seems to cause some problems when knitting documents on some computers, so article and report templates have been included which do not use the ``bookdown`` package. Guidance on how to cross-reference using ``bookdown`` has been provided in each of the templates.
+You'll see there are 2 versions of the article and report pdf templates (i.e. ``docarticle`` and ``docarticle_bookdown``). The ``bookdown`` package adds the extra utility of cross referencing tables and figures in text. This is especially handy for scientific/technical publications with lots of tables and graphs, but is also useful for images etc. Using the ``bookdown`` templates seems to cause some problems when knitting documents on some computers, so article and report templates have been included which do not use the ``bookdown`` package. Guidance on how to cross-reference using ``bookdown`` has been provided in each of the templates.To learn more about ``bookdown`` go to [https://bookdown.org/yihui/bookdown/](https://bookdown.org/yihui/bookdown/).
 
 
 ###Changing colours
@@ -150,6 +160,7 @@ Changing colours in PDF or web output normally requires some working knowledge o
 <caption>(\#tab:colours) DOC colour palette and functions for using in ``rmarkdown``. </caption>
 </tr>
 <tr>
+<td class="tg-amwm"></td>
 <td class="tg-amwm">PDF Article</td>
 <td class="tg-amwm">PDF Report</td>
 <td class="tg-amwm">Web banner</td>
@@ -226,29 +237,45 @@ Changing colours in PDF or web output normally requires some working knowledge o
 
 Producing a PDF document from ``rmarkdown`` requires LaTeX be installed on your computer.As above, we recommend [MiKTEX](https://miktex.org/). Knitting to PDF can be a bit tricky at first. Behind the scenes a programme called ``pandoc`` is converting your ``rmarkdown`` document into a LaTeX document. LaTeX requires packages of it's own to do various tasks involved in producing the document. To get started you will need to ensure that MiKTEX can access it's package repository through the DOC proxy server.
 
-If you've got MiKTEX installed search for an open the ``MiKTEX Package Manager`` in your program files.
+If you've got MiKTEX installed search for and open the ``MiKTEX Package Manager`` in your program files (Figure \@ref(fig:miktex)).
 
-<img src="miktex.jpg" width="750" height="750" />
 
-Click on ``Repository`` then ``Change Package Repository``.
+```{r miktex, fig.cap= "The MiKTEX Package Manager dialog box.", echo=FALSE}
+knitr::include_graphics("miktex.jpg")
+```
 
-<img src="packagerepo.jpg" />
+Click on ``Repository`` then ``Change Package Repository`` (Figure \@ref(fig:packagerepo)).
 
-Now click on ``Connection Settings``,
+```{r packagerepo, fig.cap= "The MiKTEX Change Package Repository dialog box.", echo=FALSE}
+knitr::include_graphics("packagerepo.jpg")
+```
 
-<img src="connectionsettings.jpg" />
+
+Now click on ``Connection Settings`` (Figure \@ref(fig:connectionsettings)),
+
+
+```{r connectionsettings, fig.cap= "The MiKTEX Connection Settings dialog box.", echo=FALSE}
+knitr::include_graphics("connectionsettings.jpg")
+```
+
 
 Add a tick to 'Use a proxy server' and add ``webproxy`` to the ``Address:`` box and ``8080`` to the ``Port:`` box. If you're working off the DOC system then you'll need to untick 'Use a proxy server` for everything to work.
 
 Now you're ready to start working on a document templates. Follow the instructions under the [Getting started](#getting-started) to open one of the pdf templates ``docarticle`` or ``docreport`` or one of the ``bookdown`` versions. 
 
-Below is one of the templates to produce a pdf document. All of the text between the ``---`` lines is known as ``yaml``. This is essentially the document metadata and tells ``pandoc`` and therefore LaTeX everything it needs to know to produce the document. Don't worry too much about how it works.  
+Figure \@ref(fig:yaml) shows one of the templates to produce a pdf document. All of the text between the ``---`` lines is known as ``yaml``. This is essentially the document metadata and tells ``pandoc`` and therefore LaTeX everything it needs to know to produce the document. Don't worry too much about how it works.  
 
-In the ``yaml`` section you can see some notation such as ``\LARGE`` and ``\large``. This is LaTeX code to specify the size of the title and subtitle. You can modify the titles and subtitles inserted there provided the ``\LARGE`` is at the front with a space between it and the actual title. Figure \@ref(fig:fontsize) shows the LaTeX commands for different font sizes. These can be used for changing font sizes for the title and subtitle in the ``yaml`` section.
+```{r yaml, fig.cap= "YAML heading in 'docarticle' pdf template", echo=FALSE}
+knitr::include_graphics("pdf.jpg")
+```
 
-<img src="pdf.jpg" />
+In the ``yaml`` section you can see some notation such as ``\LARGE`` and ``\large`` . This is LaTeX code to specify the size of the title and subtitle. You can modify the titles and subtitles inserted there provided the ``\LARGE`` is at the front with a space between it and the actual title. Figure \@ref(fig:fontsize) shows the LaTeX commands for different font sizes. These can be used for changing font sizes for the title and subtitle in the ``yaml`` section.
 
-Now we can specify the colour of the banner and font headers for the document. ``Lake`` has been set as the default colour. Where we see this:
+```{r fontsize, fig.cap= "LaTeX commands for changing font size.", echo=FALSE}
+knitr::include_graphics("fontsize.png")
+```
+
+Now we can specify the colour of the banner and font headers for the document. ``Lake`` has been set as the default colour. Where we see this in the ``yaml`` header:
 ````
 #This section contains raw LATEX code and shouldn't be altered
 header-includes:
@@ -260,19 +287,32 @@ header-includes:
 We can see 2 LaTeX commands defined:
 ``\newcommand{\mycolor}{\color{Lake}}`` controls the colour for the font headings and ``\ThisULCornerWallPaper{1}{{r DocRR::Lake()}}`` controls the colour of the banner. To change your colours simply add a different colour at ``\newcommand{\mycolor}{\color{----}}`` and ``\ThisULCornerWallPaper{1}{{r DocRR::----()}}`` from one of the colour options in Table \@ref(tab:colours). Make sure not to change any of the other text otherwise the commands will not run successfully.
 
-<img src="fontsize.png" />
 
-<caption>(\#fig:fontsize) LaTeX commands for changing font size.</caption>
+Now have a play with changing your colours and font size for titles and subtitles. If you have a really long title or subtitle it can push the  location of the author and date down the page. The best approach to this is to change the font size of your title and subtitle as needed to control how it influences the overall layout.
 
-Now have a play with changing your colours and font size for titles and subtitles. If you have a really long title or subtitle it can mess with the formatting for author and date. The best approach to this is to change the font size of your title and subtitle as needed to control how it influences the overall layout.
+####Knitting to PDF
 
-Add text re packages when knitting etc...
+When you first knit to PDF ``pandoc`` converts the ``.Rmd`` document into a ``.tex`` LaTeX document which is then compiled to make a PDF article or report. As mentioned before, LaTeX uses packages to help carry out various tasks involved in compiling a document. When you first start making PDF documents MiKTEX will need to download and install the necessary packages. You'll need to approve each download or untick the box. 
+
+__Insert photo of dialog box__
+
+Sometimes documents fail to compile because MiKTEX can't download the necessary packages. When this happens you'll see an error message as in Figure \@ref(fig:packageerror). The best thing to do here is to try 'knitting' several times, as often the package will download after a few attempts. If this still doesn't work you may need to try a different package repository in MiKTEX or download the package manually.
+
+```{r packageerror, echo=FALSE, fig.cap="Error message when packages fail to download." }
+
+knitr::include_graphics("packageerror.png")
+
+```
 
 
 
 ###HTML output
 
 ####HTML output
+
+###Word output
+
+####Word output
 
 ###Markdown basics
 
