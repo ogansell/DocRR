@@ -1,68 +1,92 @@
 ---
-title: \LARGE Add title here annoying thing is a long title will push the author stuff down
-subtitle: \large Add subtitle here if you have one. If you dont then delete
-author: \mycolor Authors Name
-date: \mycolor `r format(Sys.Date(),"%B %Y")`
-documentclass: article
-fontsize: 12pt
-mainfont: Archer Book
-mathfont: Archer Bold
-sansfont: Archer Bold
-bibliography: references.bib
-csl: "`r paste(as.character(system.file('csl', 'elsevier-harvard.csl', package = 'DocRR')))`"
-#This section contains raw LATEX code and shouldn't be altered
-header-includes:
-#--------------Define color for use here------------------------#
-- \newcommand{\mycolor}{\color{Lake}}  #Define color for use here
-- \ThisULCornerWallPaper{1}{{`r DocRR::Lake()`}}
 output:
-#------------If wanting word  or html  versions uncomment either one below--------#
-  # word_document: default 
-  # html_document: default
-#-------Make sure to comment out everything below if using word or html above-----#
-  pdf_document:
-    keep_tex: false #Only have true if you want to keep the latex file produced
-    latex_engine: xelatex #Has to be xelatex to use Archer fonts
-    template: doc_article.tex #Don't change this!!!
-    toc: false  #include table of contents
-    toc_depth: 1 #specify the depth of the table of contents
-    number_sections: true #specify whether or not to add numbered sections
+  #bookdown::word_document2: #Use this if you need to output into word. The word document will contain webshots of any html/javascript content
+  bookdown::html_document2:
+    css: http://www.doc.govt.nz/system/reporting/styles.css
+    highlight: null
+    keep_md: yes
+    theme: null
+    self_contained: no #Controls whether document has dependencies or not. Has implications for file size and speed of loading
+    number_sections: false #specify whether or not to add numbered sections
+bibliography: references.bib
+csl: http://www.doc.govt.nz/system/reporting/elsevier-harvard.csl 
 ---
+<!--Customise header here-->
+<header id="header">
+<img src=`r DocRR::Lake_web()` class="img-responsive" alt="" />
+<h1>Title of page</h1>
+</header>
+<h1 class="h1sub">Subtitle</h1>
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-knitr::opts_knit$set(root.dir = NULL)
+<!--Add some custom css to control font and table header colour or other style components where needed-->
+<style> 
+        h2 {color: `r DocRR::font_Lake()`}
+        h3 {color: `r DocRR::font_Lake()`}
+        h4 {color: `r DocRR::font_Lake()`}
+        th {background-color : `r DocRR::font_Lake()`}
+</style>
+
+```{r setup, include=FALSE,echo=FALSE}
+
+#The line of code below sets the directory of the markdown to the folder where this file is saved. You may not want to use this if using data from different network folders
+
+#knitr::opts_knit$set(root.dir = NULL)
+
+#add necessary packages here
+require(plotly)
+require(htmlwidgets)
+require(DT)
 ```
 
-## R Markdown{-}
+## Heading 1
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+Make a [plotly](https://plot.ly/r/) plot in the chunk below. Because we are using the [bookdown](https://bookdown.org/yihui/bookdown/) extension to rmarkdown we can cross reference all of our figures and tables.We do this like this:
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+Figure \@ref(fig:plot) shows an example of a javascript plot using the graphing package 'plotly'. We know that this plot is called `(fig:plot)` because the chunk in which it is made is named is labelled `plot`. Because we are cross referencing a figure we know it needs to have `fig:` in front of the label, hence `(fig:plot)`. 
 
-```{r cars}
-summary(cars)
+```{r plot, warning=FALSE,message=FALSE,echo=FALSE, fig.cap="Interesting things about diamonds"}
+
+#Make a graph. Seen as this is an html page the plotly library makes nice interactive graphics
+
+library(plotly)
+set.seed(100)
+d <- diamonds[sample(nrow(diamonds), 1000), ]
+plot_ly(d, x = ~carat, y = ~price, color = ~carat,
+        size = ~carat, text = ~paste("Clarity: ", clarity))
+
 ```
 
-## Including Plots{-}
 
-You can also embed plots, for example:
+<!-- An alternative way of adding captions. Captions don't work with some htmlwidgets packages -->
+<p class="caption" align = "middle" id = "Figure 1."> Figure 1. Interesting things about diamonds</p>
 
-```{r pressure, echo=FALSE}
-plot(pressure)
+##Heading 2
+
+Another section
+
+###Heading 3
+ 
+Probably time for a table. Table \@ref(tab:iris) shows some information that has something to do with flowers. We know to cross reference the table in the text using `(tab:iris)` because the chunk is labelled `iris` and tables are referenced by `(tab:#label)`, hence `(tab:iris)`.
+
+
+```{r iris, warning=FALSE,message=FALSE,echo=FALSE}
+
+knitr::kable(head(iris, 15), caption = 'A table of the first 15 rows of the iris data.')
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+The package DT is really handy for complex tables with lots of information. It is also designed for the internet. Table \@ref(tab:#irisDT) is an example of a DT table.
 
-### Add sub headings using this notation{-}
-References some stuff and see how it looks [@lee2005biodiversity]
+```{r irisDT, warning=FALSE,message=FALSE,echo=FALSE}
 
-\newpage
-\blandscape
-If you want to have some pages in landscape then use this notation.
-\elandscape
-\newpage
+DT::datatable(iris, caption = "DT table with interesting stuff about flowers")
 
-##References{-}
+```
+
+####Heading 4
+
+More interesting text. __Put something in bold for extra emphasis.__
 
 
+You can reference stuff like this [@lee2005biodiversity]. Or inline like this @mcglone2015. Your bibliography will automatically appear at the end of the page.
+
+##References

@@ -65,7 +65,7 @@ If using RStudio you can now load pre-made templates for outputting analysis and
 File>New File and select 'RMarkdown' (Figure \@ref(fig:rmarkdown1)).
 
 
-```{r rmarkdown1, fig.cap = "kjh",echo=FALSE}
+```{r rmarkdown1, fig.cap = "Opening a new rmarkdown file within RStudio.",echo=FALSE}
 knitr::include_graphics("rmarkdown1.bmp")
 ```
 
@@ -74,32 +74,35 @@ knitr::include_graphics("rmarkdown1.bmp")
 From here you can now load any one of the templates by selecting 
 RMarkdown>From Template and selecting any one of the templates under ``DocRR``.
 
-
-![](rmarkdown2.bmp)
-
+Select the template you want to load, give it a name and save it (Figure \@ref(fig:rmarkdown3)). 
 
 
-Select the template you want to load, give it a name and save it. 
+```{r rmarkdown3, fig.cap = "The dialog box for saving a template.",echo=FALSE}
+knitr::include_graphics("rmarkdown3.bmp")
+```
 
 
-![](rmarkdown3.bmp)
+Important to note here is that when you save your file a folder structure for your file is automatically made. This is because the templates have some extra files they are dependant on in order to compile (Figure \@ref(fig:rmarkdown4)).
+
+
+```{r rmarkdown4, fig.cap = "The folder structure automatically created when a template is loaded.",echo=FALSE}
+knitr::include_graphics("rmarkdown4.bmp")
+```
 
 
 
-Important to note here is that when you save your file a folder structure for your file is automatically made. This is because the templates have some extra files they are dependant on in order to compile.
-
-<img src="rmarkdown4.bmp" width="600" height="600" /></td>
-
-
-You've now got a template for producing a pdf report to begin working on.
+You've now got a template for producing a pdf report to begin working on (Figure \@ref(fig:rmarkdown8)).
 Press the knit button to have a look at what it produces. 
 
-<img src="rmarkdown8.bmp" width="600" height="600" /></td>
+```{r rmarkdown8, fig.cap = "A loaded rmarkdown template",echo=FALSE}
+knitr::include_graphics("rmarkdown8.bmp")
+```
+
 
 ####After installation
 
 
-When making HTML pages a common intermediate step is to ``knit`` your document to ``.docx`` format. This makes it easy to send to reviewers to get their input. The [webshot](https://cran.r-project.org/web/packages/webshot/vignettes/intro.html) package is useful in this instance as it includes a screenshot of any htmlwidgets used in the knitted ``.docx file``. It requires installation of the PhantomJS software. This causes installation of the ``DocRR`` package to fail on older installations of ``R`` so it is recommended to install this manually after installing ``DocRR``. Do this by running the code:
+When making HTML pages a common intermediate step is to ``knit`` your document to ``.docx`` format. This makes it easy to send to reviewers to get their input. The [webshot](https://cran.r-project.org/web/packages/webshot/vignettes/intro.html) package is useful in this instance as it includes a screenshot of any htmlwidgets used in the knitted ``.docx`` file. It requires installation of the PhantomJS software. This causes installation of the ``DocRR`` package to fail on older installations of ``R`` so it is recommended to install this manually after installing ``DocRR``. Do this by running the code:
 
 ``webshot::install_phantomjs()``.
 
@@ -257,13 +260,12 @@ knitr::include_graphics("packagerepo.jpg")
 
 Now click on ``Connection Settings`` (Figure \@ref(fig:connectionsettings)),
 
+Add a tick to 'Use a proxy server' and add ``webproxy`` to the ``Address:`` box and ``8080`` to the ``Port:`` box. If you're working off the DOC system then you'll need to untick 'Use a proxy server` for everything to work.
+
 
 ```{r connectionsettings, fig.cap= "The MiKTEX Connection Settings dialog box.", echo=FALSE}
 knitr::include_graphics("connectionsettings.jpg")
 ```
-
-
-Add a tick to 'Use a proxy server' and add ``webproxy`` to the ``Address:`` box and ``8080`` to the ``Port:`` box. If you're working off the DOC system then you'll need to untick 'Use a proxy server` for everything to work.
 
 Now you're ready to start working on a document templates. Follow the instructions under the [Getting started](#getting-started) to open one of the pdf templates ``docarticle`` or ``docreport`` or one of the ``bookdown`` versions. 
 
@@ -313,6 +315,32 @@ knitr::include_graphics("packageerror.png")
 ###HTML output
 
 ####HTML output
+
+Generally making something for the web requires some knowloedge of HTML and CSS. HTML tells a webpage how it is structured and CSS tells a web page how each of the various elements defined in the HTML code are supposed to look. The ``DocRR`` package contains 3 HTML templates. All of them contain a little bit of HTML and CSS, however you don't need to know much about this in order to use these templates. Figure \@ref(fig:htmltemplate) shows one of the html templates from the ```DocRR`` package.  
+
+```{r htmltemplate, echo=FALSE, fig.cap="Error message when packages fail to download." }
+
+knitr::include_graphics("htmltemplate.png")
+
+```
+
+You can see that there is some text in between ``<`` and ``>`` symbols. This is HTML code and the ``< >`` symbols are known as tags. ``<->`` opens a tag and ``</>`` closes a tag. So where you see ``<h1>Title of page</h1>`` is where the title of the page should go because ``h1`` stands for the highest order in a series of headers. So if you want to change the title for this document simply put what ever text you want in between the ``<>`` tags ``<h1>A different title</h1>``. Provided the ``<h1>`` and ``</h1>`` are left unchanged everything should work fine. HTML code has been used in this instance as it works better with the design of the templates and the CSS developed to go along with it. 
+
+CSS controls the style elements for the HTML document. If you knwo CSS you could change the look and feel of the font or table layouts for th document. However the ``DocRR`` templates have tried to minimise the amount of HTML or CSS the user needs to learn. In the section below the header you can see the code:
+
+```
+<!--Add some custom css to control font and table header colour or other style components where needed-->
+<style> 
+        h2 {color: `r DocRR::font_Lake()`}
+        h3 {color: `r DocRR::font_Lake()`}
+        h4 {color: `r DocRR::font_Lake()`}
+        th {background-color : `r DocRR::font_Lake()`}
+</style>
+
+```
+This sets the color for the font for each level of section header and background for any table headers. In HTML code this is shown by ``h2 h3 h4 th`` and translates to ``# ## ### ####`` in ``markdown`` text. The colour is set using CSS which is set in between the ``{}`` after each section header i.e. ``h2``. Normally you would need to know different __HEX__ codes for each colour which would look like this ``#FFFF00``. To make things easier wrapper functions have been defined to make it easy to choose different colours for the headings of HTML documents. So if you want to change your ``h2`` headers from <span style="color:`r DocRR::font_Lake()`">Lake</span> to <span style="color:`r DocRR::font_Alpine()`">Alpine</span>
+simply refer to the functions from change Table\@ref(tab:colours) and change the name of the colour in the function ``DocRR::font_Lake()`` to ``DocRR::font_Alpine()``. To change the colour of the banner use the functions defined for changing the colour of web banners (Table\@ref(tab:colours)).  
+
 
 ###Word output
 
