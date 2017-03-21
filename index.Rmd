@@ -62,9 +62,13 @@ Now install the ``DocRR`` package using:
 RStudio supports these templates natively.You can download RStudio [here:](https://www.rstudio.com/products/rstudio/download/) 
 
 If using RStudio you can now load pre-made templates for outputting analysis and reporting in HTML or PDF format. To do this go to
-File>New File and select 'RMarkdown'
+File>New File and select 'RMarkdown' (Figure \@ref(fig:rmarkdown1)).
 
-![](rmarkdown1.bmp)
+
+```{r rmarkdown1, fig.cap = "kjh",echo=FALSE}
+knitr::include_graphics("rmarkdown1.bmp")
+```
+
 
 
 From here you can now load any one of the templates by selecting 
@@ -313,6 +317,44 @@ knitr::include_graphics("packageerror.png")
 ###Word output
 
 ####Word output
+
+There are no word templates established for this package, namely because working in Word does't lend itself to a reprodueable workflow. However Word (``.docx``) output is useful for sharing your work with others for the purposes of peer review and comment as many people are not familiar with working in ``rmarkdown``. 
+
+Word versions of PDF or HTML templates can be easily produced using ``rmarkdown``. They do not have any style elements applied and should be used for getting feedback and review from others. Once you have all the feedback you need any changes should be incorporated back into your ``".Rmd"`` document. 
+
+In order to produce ```.docx`` documents from any of the ``DocRR`` templates you need to remove some ``#`` from some of the ``yaml`` header and add ``#`` to other section of the ``yaml`` header. The ``#`` symbol tells ``R`` to ignore any content beginning in or following ``#``.
+
+Look in the ``yaml`` header for the following:
+
+````
+
+#------------If wanting word  or html  versions uncomment either one below--------#
+  # word_document: default 
+  # html_document: default
+#-------Make sure to comment out everything below if using word or html above-----#
+  pdf_document:
+    keep_tex: false #Only have true if you want to keep the latex file produced
+    latex_engine: xelatex #Has to be xelatex to use Archer fonts
+    template: doc_article.tex #Don't change this!!!
+    toc: false  #include table of contents
+    toc_depth: 1 #specify the depth of the table of contents
+    number_sections: true #specify whether or not to add numbered sections
+````
+This tells ``pandoc`` that the ``.Rmd`` file is intended for producing a pdf document. If you want to produce a ``.docx`` document you need to remove the ``#`` symbol from ``word_document`` and add ``#`` symbols to everyline from ``pdf_document`` and down. So that section of the ``yaml`` would now look like this:
+````
+#------------If wanting word  or html  versions uncomment either one below--------#
+  word_document: default 
+  # html_document: default
+#-------Make sure to comment out everything below if using word or html above-----#
+  #pdf_document:
+    #keep_tex: false #Only have true if you want to keep the latex file produced
+    #latex_engine: xelatex #Has to be xelatex to use Archer fonts
+    #template: doc_article.tex #Don't change this!!!
+    #toc: false  #include table of contents
+    #toc_depth: 1 #specify the depth of the table of contents
+    #number_sections: true #specify whether or not to add numbered sections
+````
+This will now knit a ``.docx`` document. If you want to go back to pdf output you simply reverse the two steps just described.
 
 ###Markdown basics
 

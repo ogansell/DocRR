@@ -149,10 +149,12 @@ Making reproducible reports in NZ Department of Conservation (DOC) approved styl
 <div id="creating-a-template-in-rstudio" class="section level4">
 <h4>Creating a template in RStudio</h4>
 <p>RStudio supports these templates natively.You can download RStudio <a href="https://www.rstudio.com/products/rstudio/download/">here:</a></p>
-<p>If using RStudio you can now load pre-made templates for outputting analysis and reporting in HTML or PDF format. To do this go to File&gt;New File and select ‘RMarkdown’</p>
-<div class="figure">
-<img src="rmarkdown1.bmp" />
-
+<p>If using RStudio you can now load pre-made templates for outputting analysis and reporting in HTML or PDF format. To do this go to File&gt;New File and select ‘RMarkdown’ (Figure <a href="#fig:rmarkdown1">1</a>).</p>
+<div class="figure"><span id="fig:rmarkdown1"></span>
+<img src="rmarkdown1.bmp" alt="kjh"  />
+<p class="caption">
+Figure 1: kjh
+</p>
 </div>
 <p>From here you can now load any one of the templates by selecting RMarkdown&gt;From Template and selecting any one of the templates under <code>DocRR</code>.</p>
 <div class="figure">
@@ -407,41 +409,41 @@ Greyscale
 <div id="pdf-output-1" class="section level4">
 <h4>PDF output</h4>
 <p>Producing a PDF document from <code>rmarkdown</code> requires LaTeX be installed on your computer.As above, we recommend <a href="https://miktex.org/">MiKTEX</a>. Knitting to PDF can be a bit tricky at first. Behind the scenes a programme called <code>pandoc</code> is converting your <code>rmarkdown</code> document into a LaTeX document. LaTeX requires packages of it’s own to do various tasks involved in producing the document. To get started you will need to ensure that MiKTEX can access it’s package repository through the DOC proxy server.</p>
-<p>If you’ve got MiKTEX installed search for and open the <code>MiKTEX Package Manager</code> in your program files (Figure <a href="#fig:miktex">1</a>).</p>
+<p>If you’ve got MiKTEX installed search for and open the <code>MiKTEX Package Manager</code> in your program files (Figure <a href="#fig:miktex">2</a>).</p>
 <div class="figure"><span id="fig:miktex"></span>
 <img src="miktex.jpg" alt="The MiKTEX Package Manager dialog box." width="942" />
 <p class="caption">
-Figure 1: The MiKTEX Package Manager dialog box.
+Figure 2: The MiKTEX Package Manager dialog box.
 </p>
 </div>
-<p>Click on <code>Repository</code> then <code>Change Package Repository</code> (Figure <a href="#fig:packagerepo">2</a>).</p>
+<p>Click on <code>Repository</code> then <code>Change Package Repository</code> (Figure <a href="#fig:packagerepo">3</a>).</p>
 <div class="figure"><span id="fig:packagerepo"></span>
 <img src="packagerepo.jpg" alt="The MiKTEX Change Package Repository dialog box." width="226" />
 <p class="caption">
-Figure 2: The MiKTEX Change Package Repository dialog box.
+Figure 3: The MiKTEX Change Package Repository dialog box.
 </p>
 </div>
-<p>Now click on <code>Connection Settings</code> (Figure <a href="#fig:connectionsettings">3</a>),</p>
+<p>Now click on <code>Connection Settings</code> (Figure <a href="#fig:connectionsettings">4</a>),</p>
 <div class="figure"><span id="fig:connectionsettings"></span>
 <img src="connectionsettings.jpg" alt="The MiKTEX Connection Settings dialog box." width="170" />
 <p class="caption">
-Figure 3: The MiKTEX Connection Settings dialog box.
+Figure 4: The MiKTEX Connection Settings dialog box.
 </p>
 </div>
 <p>Add a tick to ‘Use a proxy server’ and add <code>webproxy</code> to the <code>Address:</code> box and <code>8080</code> to the <code>Port:</code> box. If you’re working off the DOC system then you’ll need to untick ’Use a proxy server` for everything to work.</p>
 <p>Now you’re ready to start working on a document templates. Follow the instructions under the <a href="#getting-started">Getting started</a> to open one of the pdf templates <code>docarticle</code> or <code>docreport</code> or one of the <code>bookdown</code> versions.</p>
-<p>Figure <a href="#fig:yaml">4</a> shows one of the templates to produce a pdf document. All of the text between the <code>---</code> lines is known as <code>yaml</code>. This is essentially the document metadata and tells <code>pandoc</code> and therefore LaTeX everything it needs to know to produce the document. Don’t worry too much about how it works.</p>
+<p>Figure <a href="#fig:yaml">5</a> shows one of the templates to produce a pdf document. All of the text between the <code>---</code> lines is known as <code>yaml</code>. This is essentially the document metadata and tells <code>pandoc</code> and therefore LaTeX everything it needs to know to produce the document. Don’t worry too much about how it works.</p>
 <div class="figure"><span id="fig:yaml"></span>
 <img src="pdf.jpg" alt="YAML heading in 'docarticle' pdf template" width="408" />
 <p class="caption">
-Figure 4: YAML heading in ‘docarticle’ pdf template
+Figure 5: YAML heading in ‘docarticle’ pdf template
 </p>
 </div>
-<p>In the <code>yaml</code> section you can see some notation such as <code>\LARGE</code> and <code>\large</code> . This is LaTeX code to specify the size of the title and subtitle. You can modify the titles and subtitles inserted there provided the <code>\LARGE</code> is at the front with a space between it and the actual title. Figure <a href="#fig:fontsize">5</a> shows the LaTeX commands for different font sizes. These can be used for changing font sizes for the title and subtitle in the <code>yaml</code> section.</p>
+<p>In the <code>yaml</code> section you can see some notation such as <code>\LARGE</code> and <code>\large</code> . This is LaTeX code to specify the size of the title and subtitle. You can modify the titles and subtitles inserted there provided the <code>\LARGE</code> is at the front with a space between it and the actual title. Figure <a href="#fig:fontsize">6</a> shows the LaTeX commands for different font sizes. These can be used for changing font sizes for the title and subtitle in the <code>yaml</code> section.</p>
 <div class="figure"><span id="fig:fontsize"></span>
 <img src="fontsize.png" alt="LaTeX commands for changing font size." width="260" />
 <p class="caption">
-Figure 5: LaTeX commands for changing font size.
+Figure 6: LaTeX commands for changing font size.
 </p>
 </div>
 <p>Now we can specify the colour of the banner and font headers for the document. <code>Lake</code> has been set as the default colour. Where we see this in the <code>yaml</code> header:</p>
@@ -458,11 +460,11 @@ header-includes:
 <h4>Knitting to PDF</h4>
 <p>When you first knit to PDF <code>pandoc</code> converts the <code>.Rmd</code> document into a <code>.tex</code> LaTeX document which is then compiled to make a PDF article or report. As mentioned before, LaTeX uses packages to help carry out various tasks involved in compiling a document. When you first start making PDF documents MiKTEX will need to download and install the necessary packages. You’ll need to approve each download or untick the box.</p>
 <p><strong>Insert photo of dialog box</strong></p>
-<p>Sometimes documents fail to compile because MiKTEX can’t download the necessary packages. When this happens you’ll see an error message as in Figure <a href="#fig:packageerror">6</a>. The best thing to do here is to try ‘knitting’ several times, as often the package will download after a few attempts. If this still doesn’t work you may need to try a different package repository in MiKTEX or download the package manually.</p>
+<p>Sometimes documents fail to compile because MiKTEX can’t download the necessary packages. When this happens you’ll see an error message as in Figure <a href="#fig:packageerror">7</a>. The best thing to do here is to try ‘knitting’ several times, as often the package will download after a few attempts. If this still doesn’t work you may need to try a different package repository in MiKTEX or download the package manually.</p>
 <div class="figure"><span id="fig:packageerror"></span>
 <img src="packageerror.png" alt="Error message when packages fail to download." width="565" />
 <p class="caption">
-Figure 6: Error message when packages fail to download.
+Figure 7: Error message when packages fail to download.
 </p>
 </div>
 </div>
@@ -477,6 +479,35 @@ Figure 6: Error message when packages fail to download.
 <h3>Word output</h3>
 <div id="word-output-1" class="section level4">
 <h4>Word output</h4>
+<p>There are no word templates established for this package, namely because working in Word does’t lend itself to a reprodueable workflow. However Word (<code>.docx</code>) output is useful for sharing your work with others for the purposes of peer review and comment as many people are not familiar with working in <code>rmarkdown</code>.</p>
+<p>Word versions of PDF or HTML templates can be easily produced using <code>rmarkdown</code>. They do not have any style elements applied and should be used for getting feedback and review from others. Once you have all the feedback you need any changes should be incorporated back into your <code>&quot;.Rmd&quot;</code> document.</p>
+<p>In order to produce `<code>.docx</code> documents from any of the <code>DocRR</code> templates you need to remove some <code>#</code> from some of the <code>yaml</code> header and add <code>#</code> to other section of the <code>yaml</code> header. The <code>#</code> symbol tells <code>R</code> to ignore any content beginning in or following <code>#</code>.</p>
+<p>Look in the <code>yaml</code> header for the following:</p>
+<pre><code>
+#------------If wanting word  or html  versions uncomment either one below--------#
+  # word_document: default 
+  # html_document: default
+#-------Make sure to comment out everything below if using word or html above-----#
+  pdf_document:
+    keep_tex: false #Only have true if you want to keep the latex file produced
+    latex_engine: xelatex #Has to be xelatex to use Archer fonts
+    template: doc_article.tex #Don&#39;t change this!!!
+    toc: false  #include table of contents
+    toc_depth: 1 #specify the depth of the table of contents
+    number_sections: true #specify whether or not to add numbered sections</code></pre>
+<p>This tells <code>pandoc</code> that the <code>.Rmd</code> file is intended for producing a pdf document. If you want to produce a <code>.docx</code> document you need to remove the <code>#</code> symbol from <code>word_document</code> and add <code>#</code> symbols to everyline from <code>pdf_document</code> and down. So that section of the <code>yaml</code> would now look like this:</p>
+<pre><code>#------------If wanting word  or html  versions uncomment either one below--------#
+  word_document: default 
+  # html_document: default
+#-------Make sure to comment out everything below if using word or html above-----#
+  #pdf_document:
+    #keep_tex: false #Only have true if you want to keep the latex file produced
+    #latex_engine: xelatex #Has to be xelatex to use Archer fonts
+    #template: doc_article.tex #Don&#39;t change this!!!
+    #toc: false  #include table of contents
+    #toc_depth: 1 #specify the depth of the table of contents
+    #number_sections: true #specify whether or not to add numbered sections</code></pre>
+<p>This will now knit a <code>.docx</code> document. If you want to go back to pdf output you simply reverse the two steps just described.</p>
 </div>
 </div>
 <div id="markdown-basics" class="section level3">
@@ -589,8 +620,8 @@ kable(head(iris,10)) #Display the first 10 rows of the dataset</code></pre>
 <pre><code>## Loading required package: DT</code></pre>
 <pre><code>## Warning: package &#39;DT&#39; was built under R version 3.3.2</code></pre>
 <pre class="r"><code>datatable(iris)</code></pre>
-<div id="htmlwidget-223e79910e2713ed1bee" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-223e79910e2713ed1bee">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","64","65","66","67","68","69","70","71","72","73","74","75","76","77","78","79","80","81","82","83","84","85","86","87","88","89","90","91","92","93","94","95","96","97","98","99","100","101","102","103","104","105","106","107","108","109","110","111","112","113","114","115","116","117","118","119","120","121","122","123","124","125","126","127","128","129","130","131","132","133","134","135","136","137","138","139","140","141","142","143","144","145","146","147","148","149","150"],[5.1,4.9,4.7,4.6,5,5.4,4.6,5,4.4,4.9,5.4,4.8,4.8,4.3,5.8,5.7,5.4,5.1,5.7,5.1,5.4,5.1,4.6,5.1,4.8,5,5,5.2,5.2,4.7,4.8,5.4,5.2,5.5,4.9,5,5.5,4.9,4.4,5.1,5,4.5,4.4,5,5.1,4.8,5.1,4.6,5.3,5,7,6.4,6.9,5.5,6.5,5.7,6.3,4.9,6.6,5.2,5,5.9,6,6.1,5.6,6.7,5.6,5.8,6.2,5.6,5.9,6.1,6.3,6.1,6.4,6.6,6.8,6.7,6,5.7,5.5,5.5,5.8,6,5.4,6,6.7,6.3,5.6,5.5,5.5,6.1,5.8,5,5.6,5.7,5.7,6.2,5.1,5.7,6.3,5.8,7.1,6.3,6.5,7.6,4.9,7.3,6.7,7.2,6.5,6.4,6.8,5.7,5.8,6.4,6.5,7.7,7.7,6,6.9,5.6,7.7,6.3,6.7,7.2,6.2,6.1,6.4,7.2,7.4,7.9,6.4,6.3,6.1,7.7,6.3,6.4,6,6.9,6.7,6.9,5.8,6.8,6.7,6.7,6.3,6.5,6.2,5.9],[3.5,3,3.2,3.1,3.6,3.9,3.4,3.4,2.9,3.1,3.7,3.4,3,3,4,4.4,3.9,3.5,3.8,3.8,3.4,3.7,3.6,3.3,3.4,3,3.4,3.5,3.4,3.2,3.1,3.4,4.1,4.2,3.1,3.2,3.5,3.6,3,3.4,3.5,2.3,3.2,3.5,3.8,3,3.8,3.2,3.7,3.3,3.2,3.2,3.1,2.3,2.8,2.8,3.3,2.4,2.9,2.7,2,3,2.2,2.9,2.9,3.1,3,2.7,2.2,2.5,3.2,2.8,2.5,2.8,2.9,3,2.8,3,2.9,2.6,2.4,2.4,2.7,2.7,3,3.4,3.1,2.3,3,2.5,2.6,3,2.6,2.3,2.7,3,2.9,2.9,2.5,2.8,3.3,2.7,3,2.9,3,3,2.5,2.9,2.5,3.6,3.2,2.7,3,2.5,2.8,3.2,3,3.8,2.6,2.2,3.2,2.8,2.8,2.7,3.3,3.2,2.8,3,2.8,3,2.8,3.8,2.8,2.8,2.6,3,3.4,3.1,3,3.1,3.1,3.1,2.7,3.2,3.3,3,2.5,3,3.4,3],[1.4,1.4,1.3,1.5,1.4,1.7,1.4,1.5,1.4,1.5,1.5,1.6,1.4,1.1,1.2,1.5,1.3,1.4,1.7,1.5,1.7,1.5,1,1.7,1.9,1.6,1.6,1.5,1.4,1.6,1.6,1.5,1.5,1.4,1.5,1.2,1.3,1.4,1.3,1.5,1.3,1.3,1.3,1.6,1.9,1.4,1.6,1.4,1.5,1.4,4.7,4.5,4.9,4,4.6,4.5,4.7,3.3,4.6,3.9,3.5,4.2,4,4.7,3.6,4.4,4.5,4.1,4.5,3.9,4.8,4,4.9,4.7,4.3,4.4,4.8,5,4.5,3.5,3.8,3.7,3.9,5.1,4.5,4.5,4.7,4.4,4.1,4,4.4,4.6,4,3.3,4.2,4.2,4.2,4.3,3,4.1,6,5.1,5.9,5.6,5.8,6.6,4.5,6.3,5.8,6.1,5.1,5.3,5.5,5,5.1,5.3,5.5,6.7,6.9,5,5.7,4.9,6.7,4.9,5.7,6,4.8,4.9,5.6,5.8,6.1,6.4,5.6,5.1,5.6,6.1,5.6,5.5,4.8,5.4,5.6,5.1,5.1,5.9,5.7,5.2,5,5.2,5.4,5.1],[0.2,0.2,0.2,0.2,0.2,0.4,0.3,0.2,0.2,0.1,0.2,0.2,0.1,0.1,0.2,0.4,0.4,0.3,0.3,0.3,0.2,0.4,0.2,0.5,0.2,0.2,0.4,0.2,0.2,0.2,0.2,0.4,0.1,0.2,0.2,0.2,0.2,0.1,0.2,0.2,0.3,0.3,0.2,0.6,0.4,0.3,0.2,0.2,0.2,0.2,1.4,1.5,1.5,1.3,1.5,1.3,1.6,1,1.3,1.4,1,1.5,1,1.4,1.3,1.4,1.5,1,1.5,1.1,1.8,1.3,1.5,1.2,1.3,1.4,1.4,1.7,1.5,1,1.1,1,1.2,1.6,1.5,1.6,1.5,1.3,1.3,1.3,1.2,1.4,1.2,1,1.3,1.2,1.3,1.3,1.1,1.3,2.5,1.9,2.1,1.8,2.2,2.1,1.7,1.8,1.8,2.5,2,1.9,2.1,2,2.4,2.3,1.8,2.2,2.3,1.5,2.3,2,2,1.8,2.1,1.8,1.8,1.8,2.1,1.6,1.9,2,2.2,1.5,1.4,2.3,2.4,1.8,1.8,2.1,2.4,2.3,1.9,2.3,2.5,2.3,1.9,2,2.3,1.8],["setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Sepal.Length<\/th>\n      <th>Sepal.Width<\/th>\n      <th>Petal.Length<\/th>\n      <th>Petal.Width<\/th>\n      <th>Species<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[1,2,3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-b938ec47e1b36345f841" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-b938ec47e1b36345f841">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","64","65","66","67","68","69","70","71","72","73","74","75","76","77","78","79","80","81","82","83","84","85","86","87","88","89","90","91","92","93","94","95","96","97","98","99","100","101","102","103","104","105","106","107","108","109","110","111","112","113","114","115","116","117","118","119","120","121","122","123","124","125","126","127","128","129","130","131","132","133","134","135","136","137","138","139","140","141","142","143","144","145","146","147","148","149","150"],[5.1,4.9,4.7,4.6,5,5.4,4.6,5,4.4,4.9,5.4,4.8,4.8,4.3,5.8,5.7,5.4,5.1,5.7,5.1,5.4,5.1,4.6,5.1,4.8,5,5,5.2,5.2,4.7,4.8,5.4,5.2,5.5,4.9,5,5.5,4.9,4.4,5.1,5,4.5,4.4,5,5.1,4.8,5.1,4.6,5.3,5,7,6.4,6.9,5.5,6.5,5.7,6.3,4.9,6.6,5.2,5,5.9,6,6.1,5.6,6.7,5.6,5.8,6.2,5.6,5.9,6.1,6.3,6.1,6.4,6.6,6.8,6.7,6,5.7,5.5,5.5,5.8,6,5.4,6,6.7,6.3,5.6,5.5,5.5,6.1,5.8,5,5.6,5.7,5.7,6.2,5.1,5.7,6.3,5.8,7.1,6.3,6.5,7.6,4.9,7.3,6.7,7.2,6.5,6.4,6.8,5.7,5.8,6.4,6.5,7.7,7.7,6,6.9,5.6,7.7,6.3,6.7,7.2,6.2,6.1,6.4,7.2,7.4,7.9,6.4,6.3,6.1,7.7,6.3,6.4,6,6.9,6.7,6.9,5.8,6.8,6.7,6.7,6.3,6.5,6.2,5.9],[3.5,3,3.2,3.1,3.6,3.9,3.4,3.4,2.9,3.1,3.7,3.4,3,3,4,4.4,3.9,3.5,3.8,3.8,3.4,3.7,3.6,3.3,3.4,3,3.4,3.5,3.4,3.2,3.1,3.4,4.1,4.2,3.1,3.2,3.5,3.6,3,3.4,3.5,2.3,3.2,3.5,3.8,3,3.8,3.2,3.7,3.3,3.2,3.2,3.1,2.3,2.8,2.8,3.3,2.4,2.9,2.7,2,3,2.2,2.9,2.9,3.1,3,2.7,2.2,2.5,3.2,2.8,2.5,2.8,2.9,3,2.8,3,2.9,2.6,2.4,2.4,2.7,2.7,3,3.4,3.1,2.3,3,2.5,2.6,3,2.6,2.3,2.7,3,2.9,2.9,2.5,2.8,3.3,2.7,3,2.9,3,3,2.5,2.9,2.5,3.6,3.2,2.7,3,2.5,2.8,3.2,3,3.8,2.6,2.2,3.2,2.8,2.8,2.7,3.3,3.2,2.8,3,2.8,3,2.8,3.8,2.8,2.8,2.6,3,3.4,3.1,3,3.1,3.1,3.1,2.7,3.2,3.3,3,2.5,3,3.4,3],[1.4,1.4,1.3,1.5,1.4,1.7,1.4,1.5,1.4,1.5,1.5,1.6,1.4,1.1,1.2,1.5,1.3,1.4,1.7,1.5,1.7,1.5,1,1.7,1.9,1.6,1.6,1.5,1.4,1.6,1.6,1.5,1.5,1.4,1.5,1.2,1.3,1.4,1.3,1.5,1.3,1.3,1.3,1.6,1.9,1.4,1.6,1.4,1.5,1.4,4.7,4.5,4.9,4,4.6,4.5,4.7,3.3,4.6,3.9,3.5,4.2,4,4.7,3.6,4.4,4.5,4.1,4.5,3.9,4.8,4,4.9,4.7,4.3,4.4,4.8,5,4.5,3.5,3.8,3.7,3.9,5.1,4.5,4.5,4.7,4.4,4.1,4,4.4,4.6,4,3.3,4.2,4.2,4.2,4.3,3,4.1,6,5.1,5.9,5.6,5.8,6.6,4.5,6.3,5.8,6.1,5.1,5.3,5.5,5,5.1,5.3,5.5,6.7,6.9,5,5.7,4.9,6.7,4.9,5.7,6,4.8,4.9,5.6,5.8,6.1,6.4,5.6,5.1,5.6,6.1,5.6,5.5,4.8,5.4,5.6,5.1,5.1,5.9,5.7,5.2,5,5.2,5.4,5.1],[0.2,0.2,0.2,0.2,0.2,0.4,0.3,0.2,0.2,0.1,0.2,0.2,0.1,0.1,0.2,0.4,0.4,0.3,0.3,0.3,0.2,0.4,0.2,0.5,0.2,0.2,0.4,0.2,0.2,0.2,0.2,0.4,0.1,0.2,0.2,0.2,0.2,0.1,0.2,0.2,0.3,0.3,0.2,0.6,0.4,0.3,0.2,0.2,0.2,0.2,1.4,1.5,1.5,1.3,1.5,1.3,1.6,1,1.3,1.4,1,1.5,1,1.4,1.3,1.4,1.5,1,1.5,1.1,1.8,1.3,1.5,1.2,1.3,1.4,1.4,1.7,1.5,1,1.1,1,1.2,1.6,1.5,1.6,1.5,1.3,1.3,1.3,1.2,1.4,1.2,1,1.3,1.2,1.3,1.3,1.1,1.3,2.5,1.9,2.1,1.8,2.2,2.1,1.7,1.8,1.8,2.5,2,1.9,2.1,2,2.4,2.3,1.8,2.2,2.3,1.5,2.3,2,2,1.8,2.1,1.8,1.8,1.8,2.1,1.6,1.9,2,2.2,1.5,1.4,2.3,2.4,1.8,1.8,2.1,2.4,2.3,1.9,2.3,2.5,2.3,1.9,2,2.3,1.8],["setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Sepal.Length<\/th>\n      <th>Sepal.Width<\/th>\n      <th>Petal.Length<\/th>\n      <th>Petal.Width<\/th>\n      <th>Species<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[1,2,3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 <p>You’ll see that <code>DT</code> tables have more options for filtering and searching data. This can be helpful if you have a more complicated table you want to show. <code>DT</code> tables don’t work if you want a PDF report.</p>
 <p>You can also generate a table in straight markdown.</p>
 <p>This looks like this:</p>
@@ -795,12 +826,12 @@ Table: A table about some sort of flower
 <div id="figures" class="section level4">
 <h4>Figures</h4>
 <p>When writing a report in Microsoft Word or similar and you want to display graphs and figures you have to generally copy and paste plots manually into your document. This lends itself to making mistakes and becomes tedious when your data/presentation changes.</p>
-<p>Using <code>rmarkdown</code>, <code>R</code> (or other language) and <code>knitr</code> it is really easy to place your figure in your work exactly where you want it to go. If your data changes then it is as simple as ensuring your new data is called to update your figure.Figure <a href="#fig:flowers">7</a> tells us simple things about the <code>iris</code> dataset.</p>
+<p>Using <code>rmarkdown</code>, <code>R</code> (or other language) and <code>knitr</code> it is really easy to place your figure in your work exactly where you want it to go. If your data changes then it is as simple as ensuring your new data is called to update your figure.Figure <a href="#fig:flowers">8</a> tells us simple things about the <code>iris</code> dataset.</p>
 <pre class="r"><code>plot(iris)</code></pre>
 <div class="figure"><span id="fig:flowers"></span>
 <img src="index_files/figure-html/flowers-1.png" alt="Something to do with flowers" width="480" />
 <p class="caption">
-Figure 7: Something to do with flowers
+Figure 8: Something to do with flowers
 </p>
 </div>
 </div>
