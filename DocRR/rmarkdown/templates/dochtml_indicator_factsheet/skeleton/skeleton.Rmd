@@ -1,0 +1,88 @@
+---
+output:
+  #bookdown::worddocument2:
+  bookdown::html_document2:
+    css: http://www.doc.govt.nz/system/reporting/styles.css
+    highlight: null
+    keep_md: yes
+    theme: null
+    self_contained: yes
+bibliography: references.bib
+csl: http://www.doc.govt.nz/system/reporting/elsevier-harvard.csl 
+---
+<!--Customise header here-->
+<header id="header">
+<img src="http://www.doc.govt.nz/system/reporting/orange-banner.jpg" class="img-responsive" alt="" />
+<h1>Title of page</h1>
+</header>
+<h1 class="h1sub">Subtitle of measure or case study of species</h1>
+
+```{r setup, include=FALSE,echo=FALSE}
+
+#The line of code below sets the directory of the markdown to the folder where this file is saved. You may not want to use this if using data from different network folders
+
+#knitr::opts_knit$set(root.dir = NULL)
+
+#add necessary packages here
+require(plotly)
+require(htmlwidgets)
+
+```
+
+## Key findings
+
+<p><b> Key findings in bold</b></p>
+
+* A bullet point
+* And another 
+* and so on and so forth
+
+
+
+<section></section> <!-- Makes sure any htmlwidget plots don't overlap text -->
+
+<!-- Add page breaks for printing where necessary using the code below -->
+<p style="page-break-before:always;"></p>
+
+Figure \@ref(fig:plot) is an example of a plotly plot.
+
+```{r plot, warning=FALSE,message=FALSE,echo=FALSE, fig.cap= "Interesting thingsa about diamonds."}
+
+#Make a graph. Seen as this is an html page the plotly library makes nice interactive graphics
+
+library(plotly)
+set.seed(100)
+d <- diamonds[sample(nrow(diamonds), 1000), ]
+plot_ly(d, x = ~carat, y = ~price, color = ~carat,
+        size = ~carat, text = ~paste("Clarity: ", clarity))
+
+```
+
+
+<!-- An alternative way of adding captions. Only use if captions not working for some htmlwidgets. Otherwise delete. -->
+<p class="caption" align = "middle" id = "Figure 1."> Figure \@ref(fig:plot). Interesting things about diamonds</p>
+
+##Definition and methodology
+
+Describe the data and the methods
+
+##Data quality
+ 
+This measure is classified as a [case study](http://www.stats.govt.nz/browse_for_stats/environment/environmental-reporting-series/environmental-indicators/Home/About.aspx#topics{:target="_blank"}).
+
+##Relevance
+
+This measure relates to indicator **Indicator name in bold**
+
+##Accuracy
+
+This measure complies with the <a href="http://www.stats.govt.nz/browse_for_stats/environment/environmental-reporting-series/environmental-indicators/Home/About.aspx#dataquality" target="_blank">data quality guidelines</a> used in New Zealand's Environmental Reporting framework.
+
+##Outcomes Monitoring Framework
+
+The Department of Conservation's (DOC's) Outcomes Monitoring Framework provides a platform on which DOC and others can assess outcomes in a clear, structured and transparent way [@lee2005biodiversity]. It has been developed as a logical hierarchy that is based on broad, overarching Outcomes, beneath which are nested Outcome Objectives, Indicators, Measures and Data Elements to provide ever increasing levels of detail. The framework is scalable, as the indicators and measures remain compatible and consistent whether applied locally, regionally or nationally. 
+The recently updated framework provides a roadmap for gathering information to meet the specific objectives of DOC and other agencies [@mcglone2015]. The provision of a national framework with agreed outcomes, indicators and measures supports collaboration with land management and regulatory agencies, allowing for more integrated environmental policy and 'State of the Environment' reporting. DOC has partially implemented a national monitoring and reporting system, whereby priority indicators and measures are routinely used to report on progress against the objectives and outcomes. This factsheet reports on a measure for the 2015/16 year.
+
+##Glossary of terms
+
+##References

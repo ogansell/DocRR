@@ -1,0 +1,17 @@
+Package: DocRR
+Title: Templates for reproducible reporting for NZ Department of
+        Conservation
+Version: 0.0.0.9000
+Authors@R: person("Ollie", "Gansell", email = "ogansell@doc.govt.nz", role = c("aut", "cre"))
+Description: This package contains rmarkdown templates for creating reproducible reports in pdf and html output.
+Depends: R (>= 2.2)
+License: What license is it under?
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.0.1
+Imports: bookdown, plotly, rmarkdown, knitr, ggplot2, bookdown,
+        htmlwidgets, htmltools, webshot, tidyr, DT, magrittr, webshot,
+        rprojroot
+Author: Ollie Gansell [aut, cre]
+Maintainer: Ollie Gansell <ogansell@doc.govt.nz>
+
