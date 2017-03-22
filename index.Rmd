@@ -49,8 +49,8 @@ Download and open the ``.Rmd`` file from [here](http://rmarkdown.rstudio.com/dem
 
 Notice that the file contains three types of content:
 
-* An (optional) YAML header surrounded by ``---``s
-* R code chunks surrounded by ```````s
+* An (optional) YAML header surrounded by ``---``
+* R code chunks surrounded by 3 backticks `` ``` `` before and after R code
 * text mixed with simple text formatting.
 
 You can also have in-line R code.
@@ -161,7 +161,7 @@ Putting the package name before a command followed by ``::`` as above ``knitr::`
 
 If displaying solely in HTML the ``DT`` library has some good options for displaying more complex data.
 
-```{r DT table}
+```{r DT table,warning=FALSE, message=FALSE}
 require(DT)
 datatable(iris)
 
@@ -218,7 +218,7 @@ The website [http://www.tablesgenerator.com/](http://www.tablesgenerator.com/) i
 | 5.0          | 3.4         | 1.5          | 0.2         | setosa  |
 | 4.4          | 2.9         | 1.4          | 0.2         | setosa  |
 | 4.9          | 3.1         | 1.5          | 0.1         | setosa  |
-Table (\#tab:markdowntable): A table about some sort of flower
+Table: (\#tab:markdowntable) A table about some sort of flower
 
 [^1]: A footnote about Sepal length
 ```
@@ -238,7 +238,7 @@ Which looks like Table \@ref(tab:markdowntable):
 | 5.0          | 3.4         | 1.5          | 0.2         | setosa  |
 | 4.4          | 2.9         | 1.4          | 0.2         | setosa  |
 | 4.9          | 3.1         | 1.5          | 0.1         | setosa  |
-Table (\#tab:markdowntable): A table about some sort of flower
+Table: (\#tab:markdowntable) A table about some sort of flower
 
 
 [^1]: A footnote about Sepal length
@@ -262,7 +262,7 @@ plot(iris)
 R Markdown will automatically produce a bibliography from in-line citations. By default the ``DocRR`` package uses ``bibtex`` citations as the default format. When a template is saved a ``.bib`` file is automatically added to the folder structure. This can be thought of as a reference database much like Endnote or Mendeley, indeed Endnote/Mendely libraries can usually be exported to ``bibtex``. Each reference cited needs to have an entry in the ``.bib`` file. An easy way to get the ``bibtex`` format for citations is to use [google scholar](https://scholar.google.co.nz/). Search for an article, click on 'Cite' then click on 'BibTeX' (Figure \@ref(fig:googlescholar)). Copy and paste the result into your ``.bib`` file.
 
 ```{r googlescholar, fig.cap = "The 'Cite' dialog box in Google Scholar.",echo=FALSE}
-knitr::include_graphics("googlescholar.png")
+knitr::include_graphics("images/googlescholar.png")
 ```
 
 You can now refer to this within your document. 
@@ -328,7 +328,7 @@ _File>New File>RMarkdown_ (Figure \@ref(fig:rmarkdown1)).
 
 
 ```{r rmarkdown1, fig.cap = "Opening a new rmarkdown file within RStudio.",echo=FALSE, fig.height=8, fig.height=8}
-knitr::include_graphics("rmarkdown1.bmp")
+knitr::include_graphics("images/rmarkdown1.bmp")
 ```
 
 
@@ -340,7 +340,7 @@ Select the template you want to load, give it a name and save it (Figure \@ref(f
 
 
 ```{r rmarkdown3, fig.cap = "The dialog box for saving a template.",echo=FALSE}
-knitr::include_graphics("rmarkdown3.bmp")
+knitr::include_graphics("images/rmarkdown3.bmp")
 ```
 
 
@@ -348,7 +348,7 @@ Important to note here is that when you save your file a folder structure for yo
 
 
 ```{r rmarkdown4, fig.cap = "The folder structure automatically created when a template is loaded.",echo=FALSE}
-knitr::include_graphics("rmarkdown4.bmp")
+knitr::include_graphics("images/rmarkdown4.bmp")
 ```
 
 
@@ -357,7 +357,7 @@ You've now got a template for producing a PDF report to begin working on (Figure
 Press the knit button to have a look at what it produces. 
 
 ```{r rmarkdown8, fig.cap = "A loaded rmarkdown template",echo=FALSE}
-knitr::include_graphics("rmarkdown8.bmp")
+knitr::include_graphics("images/rmarkdown8.bmp")
 ```
 
 
@@ -433,7 +433,7 @@ Changing colours in PDF or HTML documents normally requires some working knowled
 <td class="tg-yw4l" rowspan="2"></td>
 <td class="tg-amwm" colspan="3">Banners</td>
 <td class="tg-amwm">Font</td>
-<caption>(\#tab:colours) DOC colour palette and functions for using in ``rmarkdown``. </caption>
+<caption>(\#tab:colours) DOC colour palette and functions for using in ``DocRR``. </caption>
 </tr>
 <tr>
 <td class="tg-amwm"></td>
@@ -443,7 +443,7 @@ Changing colours in PDF or HTML documents normally requires some working knowled
 <td class="tg-amwm">Web font</td>
 </tr>
 <tr>
-<td><span style="color:#59118E"><h5>Alpine</h5></span>
+<td><span style="color:#59118E; font-size: 1.4em;" ><h6>Alpine</h6></span>
 
 <img src="inst/banners/Alpine.png" width="150" height="50" /></td>
 <td>``DocRR::Alpine``</td>
@@ -452,7 +452,7 @@ Changing colours in PDF or HTML documents normally requires some working knowled
 <td>``DocRR::font_Alpine``</td>
 </tr>
 <tr>
-<td><span style="color:#008CB2"><h5>Lake</h5></span>
+<td><span style="color:#008CB2; font-size: 1.4em;"><h6>Lake</h6></span>
 
 <img src="inst/banners/Lake.png" width="150" height="50" /></td>
 <td>``DocRR::Lake``</td>
@@ -461,7 +461,7 @@ Changing colours in PDF or HTML documents normally requires some working knowled
 <td>``DocRR::font_Lake``</td>
 </tr>
 <tr>
-<td><span style="color:#E0219E"><h5>Sunset</h5></span>
+<td><span style="color:#E0219E; font-size: 1.4em;"><h6>Sunset</h6></span>
 
 <img src="inst/banners/Sunset.png" width="150" height="50" /></td>
 <td>``DocRR::Sunset``</td>
@@ -470,7 +470,7 @@ Changing colours in PDF or HTML documents normally requires some working knowled
 <td>``DocRR::font_Sunset``</td>
 </tr>
 <tr>
-<td><span style="color:#DD5900"><h5>Fauna</h5></span>
+<td><span style="color:#DD5900; font-size: 1.4em;"><h6>Fauna</h6></span>
 
 <img src="inst/banners/Fauna.png" width="150" height="50" /> </td>
 <td>``DocRR::Fauna``</td>
@@ -479,7 +479,7 @@ Changing colours in PDF or HTML documents normally requires some working knowled
 <td>``DocRR::font_Fauna``</td>
 </tr>
 <tr>
-<td><span style="color:#6D2C00"><h5>Kiwi</h5></span>
+<td><span style="color:#6D2C00; font-size: 1.4em;"><h6>Kiwi</h6></span>
 
 <img src="inst/banners/Kiwi.png" width="150" height="50" /> </td>
 <td>``DocRR::Kiwi``</td>
@@ -488,7 +488,7 @@ Changing colours in PDF or HTML documents normally requires some working knowled
 <td>``DocRR::font_Kiwi``</td>
 </tr>
 <tr>
-<td><span style="color:#B5A80C"><h5>Honey</h5></span>
+<td><span style="color:#B5A80C; font-size: 1.4em;"><h6>Honey</h6></span>
 
 <img src="inst/banners/Honey.png" width="150" height="50" /></td>
 <td>``DocRR::Honey``</td>
@@ -497,7 +497,7 @@ Changing colours in PDF or HTML documents normally requires some working knowled
 <td>``DocRR::font_Honey``</td>
 </tr>
 <tr>
-<td><span style="color:#808080"><h5>Greyscale</h5></span>
+<td><span style="color:#808080; font-size: 1.4em;"><h6>Greyscale</h6></span>
 
 <img src="inst/banners/Greyscale.png" width="150" height="50" /></td>
 <td>``DocRR::Greyscale``</td>
@@ -517,13 +517,13 @@ If you've got MiKTEX installed search for and open the ``MiKTEX Package Manager`
 
 
 ```{r miktex, fig.cap= "The MiKTEX Package Manager dialog box.", echo=FALSE, fig.height=8, fig.height=8}
-knitr::include_graphics("miktex.jpg")
+knitr::include_graphics("images/miktex.jpg")
 ```
 
 Click on ``Repository`` then ``Change Package Repository`` (Figure \@ref(fig:packagerepo)).
 
 ```{r packagerepo, fig.cap= "The MiKTEX Change Package Repository dialog box.", echo=FALSE, fig.height=8, fig.height=8}
-knitr::include_graphics("packagerepo.jpg")
+knitr::include_graphics("images/packagerepo.jpg")
 ```
 
 
@@ -533,7 +533,7 @@ Add a tick to 'Use a proxy server' and add ``webproxy`` to the ``Address:`` box 
 
 
 ```{r connectionsettings, fig.cap= "The MiKTEX Connection Settings dialog box.", echo=FALSE}
-knitr::include_graphics("connectionsettings.jpg")
+knitr::include_graphics("images/connectionsettings.jpg")
 ```
 
 Now you're ready to start working on a document templates. Follow the instructions under the [Getting started](#getting-started) to open one of the PDF templates ``docarticle`` or ``docreport`` or one of the ``bookdown`` versions. 
@@ -541,13 +541,13 @@ Now you're ready to start working on a document templates. Follow the instructio
 Figure \@ref(fig:yaml) shows one of the templates to produce a PDF document. All of the text between the ``---`` lines is known as YAML. YAML was mentioned previously and is essentially the document metadata and tells ``pandoc`` and therefore LaTeX everything it needs to know to produce the document. Don't worry too much about how it works.  
 
 ```{r yaml, fig.cap= "YAML heading in 'docarticle' PDF template", echo=FALSE}
-knitr::include_graphics("pdf.jpg")
+knitr::include_graphics("images/pdf.jpg")
 ```
 
 In the YAML section you can see some notation such as ``\LARGE`` and ``\large`` . This is LaTeX code to specify the size of the title and subtitle. You can modify the titles and subtitles inserted there provided the ``\LARGE`` is at the front with a space between it and the actual title. Figure \@ref(fig:fontsize) shows the LaTeX commands for different font sizes. These can be used for changing font sizes for the title and subtitle in the YAML section.
 
 ```{r fontsize, fig.cap= "LaTeX commands for changing font size.", echo=FALSE}
-knitr::include_graphics("fontsize.png")
+knitr::include_graphics("images/fontsize.png")
 ```
 
 Now we can specify the colour of the banner and font headers for the document. ``Lake`` has been set as the default colour. Where we see this in the YAML header:
@@ -592,7 +592,7 @@ Sometimes documents fail to compile because MiKTEX can't download the necessary 
 
 ```{r packageerror, echo=FALSE, fig.cap="Error message when packages fail to download." }
 
-knitr::include_graphics("packageerror.png")
+knitr::include_graphics("images/packageerror.png")
 
 ```
 
@@ -606,7 +606,7 @@ Generally making an HTML document requires some knowloedge of HTML and CSS code.
 
 ```{r htmltemplate, echo=FALSE, fig.cap="Error message when packages fail to download." }
 
-knitr::include_graphics("htmltemplate.png")
+knitr::include_graphics("images/htmltemplate.png")
 
 ```
 
