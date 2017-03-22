@@ -32,7 +32,7 @@ csl: http://www.doc.govt.nz/system/reporting/elsevier-harvard.csl
 ##{.tabset .tabset-fade} 
 
 
-This repository contains a series of templates for creating HTML and PDF documents in R Markdown using the style themes employed by NZ Department of Conservation (DOC).
+This repository contains a series of templates for creating HTML and PDF documents in R Markdown using the style themes employed by NZ Department of Conservation (DOC). Below is a brief guide to getting started with writing and producing tables and figures using R Markdown followed by directions to installing the ``DocRR`` package and using it to produce high quality reproducible reports from R.  
 
 ###Rmarkdown 
 
@@ -77,9 +77,9 @@ date: "3 Feb 2017"
 output: html_document
 ---
 ```
-The final document will then contain a nicely formated title, along with the author name and date.
+The final document will then contain a nicely formatted title, along with the author name and date.
 
-You can leave off the author and date if you want; you can leave off the title, too. Actually, you don’t need to include any of this. But ``output: html_document`` tells the rmarkdown package to convert the document to html. Similarly ``output: pdf_document`` or even ``output: word_document``, in which case your document will be converted to a PDF or Word `.docx` file, respectively.
+You can leave off the author and date if you want; you can leave off the title, too. Actually, you don’t need to include any of this. But ``output: html_document`` tells the ``rmarkdown`` package to convert the document to html. Similarly ``output: pdf_document`` or even ``output: word_document``, in which case your document will be converted to a PDF or Word `.docx` file, respectively.
 
 YAML becomes important later when we want to convert between document formats and customise our documents.
 
@@ -112,7 +112,7 @@ The other way of incorporating R code directly into your reporting is through 'i
 
 In-line code is used for incorporating numbers derived from data directly into your writing. Thus, your report should never explicitly include numbers that are derived from the data. Don’t write “There are 168 individuals.” Rather, insert a bit of code that, when evaluated, gives the number of individuals.
 
-Rmarkdown enables this through using R code directly in your text. Code results can be inserted directly into the text of a ``.Rmd`` file by enclosing the code with `r`. 
+R markdown enables this through using R code directly in your text. Code results can be inserted directly into the text of a ``.Rmd`` file by enclosing the code with `r`. 
 
 To write "there are 168 individuals" using in-line code you would do this:
 
@@ -259,7 +259,7 @@ plot(iris)
 
 #####References and citations
 
-R Markdown will automatically produce a bibliography from in-line citations. By default the ``DocRR`` package uses ``bibtex`` citations as the default format. When a template is saved a ``.bib`` file is automatically added to the folder structure. This can be thought of as a reference database much like Endnote or Mendeley, indeed Endnote/Mendely libraries can usually be exported to ``bibtex``. Each reference cited needs to have an entry in the ``.bib`` file. An easy way to get the ``bibtex`` format for citations is to use [google scholar](https://scholar.google.co.nz/). Search for an article, click on 'Cite' then click on 'BibTeX' (Figure \@ref(fig:googlescholar)). Copy and paste the result into your ``.bib`` file.
+R Markdown will automatically produce a bibliography from in-line citations. By default the ``DocRR`` package uses ``bibtex`` citations as the default format. When a template is saved a ``.bib`` file is automatically added to the folder structure. This can be thought of as a reference database much like Endnote or Mendeley, indeed Endnote/Mendeley libraries can usually be exported to ``bibtex``. Each reference cited needs to have an entry in the ``.bib`` file. An easy way to get the ``bibtex`` format for citations is to use [google scholar](https://scholar.google.co.nz/). Search for an article, click on 'Cite' then click on 'BibTeX' (Figure \@ref(fig:googlescholar)). Copy and paste the result into your ``.bib`` file.
 
 ```{r googlescholar, fig.cap = "The 'Cite' dialog box in Google Scholar.",echo=FALSE}
 knitr::include_graphics("images/googlescholar.png")
@@ -267,7 +267,7 @@ knitr::include_graphics("images/googlescholar.png")
 
 You can now refer to this within your document. 
 
-Citations go inside square brackets and are separated by semicolons. Each citation must have a key, composed of ‘@’ + the citation identifier from the database, and may optionally have a prefix, a locator, and a suffix. Here are some examples:
+Citations go inside square brackets and are separated by semicolons. Each citation must have a key, composed of ``@`` + the citation identifier from the database, and may optionally have a prefix, a locator, and a suffix. Here are some examples:
 ```
 Blah blah [see @doe99, pp. 33-35; also @smith04, ch. 1].
 
@@ -275,14 +275,14 @@ Blah blah [@doe99, pp. 33-35, 38-39 and *passim*].
 
 Blah blah [@smith04; @doe99].
 ```
-To do an inline citation do the following:
+To do an in-line citation do the following:
 
 ```
 @smith04 says blah.
 
 @smith04 [p. 33] says blah.
 ```
-When you cite something using the ``@`` symbol and the citation identifier i.e. ``@smith04`` it will automatically appear in the document bibliograhy. The bibliography will automatically appear at the end of the document. If you finish each document with ``##References`` then the bibliography will appear below the header.
+When you cite something using the ``@`` symbol and the citation identifier i.e. ``@smith04`` it will automatically appear in the document bibliography. The bibliography will automatically appear at the end of the document. If you finish each document with ``##References`` then the bibliography will appear below the header.
 
 #####Custom templates
 
@@ -292,7 +292,7 @@ The ``DocRR`` package contains templates for reproducible reporting for the New 
 
 ###DocRR package
 
-``DocRR`` stands for DOC Reproducible Research as the ``DocRR`` package has been made to enable DOC staff to produce high quality documents in PDF and HTML formats which can be easily updated and reproduced. Using ``DocRR`` templates means there is no need to bother with manual formatting of Microsoft Word documents or copying and pasting of graphs and figures. 
+``DocRR`` stands for 'DOC Reproducible Reporting' as the ``DocRR`` package has been made to enable DOC staff to produce high quality documents in PDF and HTML formats which can be easily updated and reproduced. Using ``DocRR`` templates means there is no need to bother with manual formatting of Microsoft Word documents or copying and pasting of graphs and figures. 
 
 ####Getting started
 
@@ -321,9 +321,9 @@ devtools::install_github('ogansell/DocRR')
 ####Creating a template in RStudio
 
 
-RStudio supports these templates natively.You can download RStudio [here](https://www.rstudio.com/products/rstudio/download/). 
+R Studio supports these templates natively. You can download R Studio [here](https://www.rstudio.com/products/rstudio/download/). 
 
-If using RStudio you can now load pre-made templates for outputting analysis and reporting in HTML or PDF format. To do this go to
+If using R Studio you can now load pre-made templates for outputting analysis and reporting in HTML or PDF format. To do this go to
 _File>New File>RMarkdown_ (Figure \@ref(fig:rmarkdown1)).
 
 
@@ -364,7 +364,7 @@ knitr::include_graphics("images/rmarkdown8.bmp")
 ####After installation
 
 
-When making PDF or HTML documents a common intermediate step is to ``knit`` your document to ``.docx`` format. This makes it easy to send to reviewers to get their input. The [webshot](https://cran.r-project.org/web/packages/webshot/vignettes/intro.html) package is useful in this instance as it includes a screenshot of any htmlwidgets used in the knitted ``.docx`` file. It requires installation of the PhantomJS software. This causes installation of the ``DocRR`` package to fail on older installations of R so it is recommended to install this manually after installing ``DocRR``. Do this by running the code:
+When making PDF or HTML documents a common intermediate step is to ``knit`` your document to ``.docx`` format. This makes it easy to send to reviewers to get their input. The [webshot](https://cran.r-project.org/web/packages/webshot/vignettes/intro.html) package is useful in this instance as it includes a screenshot of any html widgets used in the knitted ``.docx`` file. It requires installation of the PhantomJS software. This causes installation of the ``DocRR`` package to fail on older installations of R so it is recommended to install this manually after installing ``DocRR``. Do this by running the code:
 
 ```
 webshot::install_phantomjs()
@@ -373,7 +373,7 @@ webshot::install_phantomjs()
 
 ####Creating a template outside of RStudio
 
-If you're not using RStudio it's still easy to use these templates in base R.
+If you're not using R Studio it's still easy to use these templates in base R.
 
 Wrapper functions have been made to make it easy to load a template.
 
@@ -602,9 +602,9 @@ knitr::include_graphics("images/packageerror.png")
 
 ####HTML output
 
-Generally making an HTML document requires some knowloedge of HTML and CSS code. HTML tells a webpage how it is structured and CSS tells a web page how each of the various elements defined in the HTML code are supposed to look. The ``DocRR`` package contains 3 HTML document templates. All of them contain a little bit of HTML and CSS, however you don't need to know much about this in order to use these templates. Figure \@ref(fig:htmltemplate) shows one of the html templates from the ```DocRR`` package.  
+Generally making an HTML document requires some knowloedge of HTML and CSS code. HTML tells a webpage how it is structured and CSS tells a web page how each of the various elements defined in the HTML code are supposed to look. The ``DocRR`` package contains 3 HTML document templates. All of them contain a little bit of HTML and CSS, however you don't need to know much about this in order to use these templates. Figure \@ref(fig:htmltemplate) shows one of the html templates from the ``DocRR`` package.  
 
-```{r htmltemplate, echo=FALSE, fig.cap="Error message when packages fail to download." }
+```{r htmltemplate, echo=FALSE, fig.cap="Example ``DocRR`` HTML template." }
 
 knitr::include_graphics("images/htmltemplate.png")
 
@@ -612,7 +612,7 @@ knitr::include_graphics("images/htmltemplate.png")
 
 You can see that there is some text in between the ``<`` and ``>`` symbols. This is HTML code and the ``< >`` symbols are known as tags. ``< >`` opens a tag and ``</>`` closes a tag. So where you see ``<h1>Title of page</h1>`` is where the title of the page should go because ``h1`` stands for the highest order in a series of headers. So if you want to change the title for this document simply put what ever text you want in between the ``< >`` tags ``<h1>A different title</h1>``. Provided the ``<h1>`` and ``</h1>`` are left unchanged everything should work fine. HTML code has been used in this instance as it works better with the design of the templates and the CSS developed to go along with it. 
 
-CSS controls the style elements for the HTML document. If you know CSS you could change the look and feel of the font or table layouts for th document. However the ``DocRR`` templates have tried to minimise the amount of HTML or CSS the user needs to learn. In the section below the header you can see the code:
+CSS controls the style elements for the HTML document. If you know CSS you could change the look and feel of the font or table layouts for the document. However the ``DocRR`` templates have tried to minimise the amount of HTML or CSS the user needs to learn. In the section below the header you can see the code:
 
 ```{r, eval=FALSE}
 <!--Add some custom css to control font and table header colour or other style components where needed-->
@@ -644,7 +644,7 @@ To change the colour of the banner use the functions defined for changing the co
 
 ####Word output
 
-There are no word templates established for this package, namely because working in Word does't lend itself to a reprodueable workflow. However Word (``.docx``) output is useful for sharing your work with others for the purposes of peer review and comment as many people are not familiar with working in ``rmarkdown``. 
+There are no word templates established for this package, namely because working in Word doesn't lend itself to a reproducible workflow. However Word (``.docx``) output is useful for sharing your work with others for the purposes of peer review and comment as many people are not familiar with working in ``rmarkdown``. 
 
 Word versions of PDF or HTML templates can be easily produced using ``rmarkdown``. They do not have any style elements applied and should be used for getting feedback and review from others. Once you have all the feedback you need any changes should be incorporated back into your ``".Rmd"`` document. 
 
@@ -666,7 +666,7 @@ Look in the YAML header for the following:
     toc_depth: 1 #specify the depth of the table of contents
     number_sections: true #specify whether or not to add numbered sections
 ````
-This tells ``pandoc`` that the ``.Rmd`` file is intended for producing a PDF document. If you want to produce a ``.docx`` document you need to remove the ``#`` symbol from ``word_document`` and add ``#`` symbols to everyline from ``pdf_document`` and down. So that section of the YAML would now look like this:
+This tells ``pandoc`` that the ``.Rmd`` file is intended for producing a PDF document. If you want to produce a ``.docx`` document you need to remove the ``#`` symbol from ``word_document`` and add ``#`` symbols to every line from ``pdf_document`` and down. So that section of the YAML would now look like this:
 
 ````
 #------------If wanting word  or html  versions uncomment either one below--------#
