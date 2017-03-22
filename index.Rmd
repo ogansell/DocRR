@@ -34,11 +34,11 @@ csl: http://www.doc.govt.nz/system/reporting/elsevier-harvard.csl
 
 This repository contains a series of templates for creating HTML and PDF documents in R Markdown using the style themes employed by NZ Department of Conservation (DOC). Below is a brief guide to getting started with writing and producing tables and figures using R Markdown followed by directions to installing the ``DocRR`` package and using it to produce high quality reproducible reports from R.  
 
-###Rmarkdown 
+###R markdown 
 
-####Rmarkdown 
+####R markdown 
 
-R Markdown provides an authoring framework for the analysis of data and reporting of results. You can use a single R Markdown file to both
+R markdown provides an authoring framework for the analysis of data and reporting of results. You can use a single R Markdown file to both
 
 * save and execute code.
 * generate high quality reports that can be shared with an audience.
