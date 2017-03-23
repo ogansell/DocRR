@@ -32,13 +32,17 @@ csl: http://www.doc.govt.nz/system/reporting/elsevier-harvard.csl
 ##{.tabset .tabset-fade} 
 
 
-This repository contains a series of templates for creating HTML and PDF documents in R Markdown using the style themes employed by NZ Department of Conservation (DOC). Below is a brief guide to getting started with writing and producing tables and figures using R Markdown followed by directions to installing the ``DocRR`` package and using it to produce high quality reproducible reports from R.  
+This repository contains a series of templates for creating HTML and PDF documents in R markdown using the style themes employed by NZ Department of Conservation (DOC). Below is a brief guide to getting started with writing and producing tables and figures using R markdown followed by directions to installing the ``DocRR`` package and using it to produce high quality reproducible reports from R.  
 
 ###R markdown 
 
-####R markdown 
+The following is a brief introduction to R markdown, covering some of the basics of creating a ``.Rmd`` document, incorporating R code, writing and producing tables and figures in R markdown. For more detailed documentation download and use the [R markdown cheatsheet](https://www.rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf) and [R markdown reference guide](https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf). If already familiar with R markdown then skip ahead to the [DocRR](#docrr-package) section to install and begin using the ``DocRR`` package. 
 
-R markdown provides an authoring framework for the analysis of data and reporting of results. You can use a single R Markdown file to both
+Before starting working with R markdown some extra software is needed. In order for PDF output to work you need to make sure you have a LaTeX distribution installed. [MiKTEX](https://miktex.org/) is the most common distribution to use. Download and install it if you don't already have it.
+
+####R markdown
+
+R markdown provides an authoring framework for the analysis of data and reporting of results. You can use a single R markdown file to both
 
 * save and execute code.
 * generate high quality reports that can be shared with an audience.
@@ -57,6 +61,8 @@ You can also have in-line R code.
 
 YAML, code chunks and in-line R code are described in more detail below.
 
+
+
 #####YAML
 
 At the top of the ``.Rmd`` file you downloaded you can see text in between ``---``:
@@ -67,7 +73,7 @@ output: html_document
 ---
 
 ```
-This is called the YAML header. YAML is a simple text-based format for specifying data. In R Markdown documents YAML can be used for specifying the document metadata (title, author, date). This can be done as below:
+This is called the YAML header. YAML is a simple text-based format for specifying data. In R markdown documents YAML can be used for specifying the document metadata (title, author, date). This can be done as below:
 
 ```
 ---
@@ -81,14 +87,20 @@ The final document will then contain a nicely formatted title, along with the au
 
 You can leave off the author and date if you want; you can leave off the title, too. Actually, you don’t need to include any of this. But ``output: html_document`` tells the ``rmarkdown`` package to convert the document to html. Similarly ``output: pdf_document`` or even ``output: word_document``, in which case your document will be converted to a PDF or Word `.docx` file, respectively.
 
-YAML becomes important later when we want to convert between document formats and customise our documents.
+Have a play with changing the YAML output from ``output: html_document`` to ``output: pdf_document`` or ``output: word_document`` and click on the 'Knit' button to see how easy it is to generate documents in different formats.
 
+
+```{r knit, fig.cap = "The 'Knit' button in R Studio.",echo=FALSE}
+knitr::include_graphics("images/knit.png")
+```
+
+YAML becomes more important later when we want to convert between document formats and customise our documents.
 
 #####Code chunks
 
-A key motivation for using R Markdown is facilitating reproducible research and reporting: that our results are accompanied by the data and code needed to produce them.
+A key motivation for using R markdown is facilitating reproducible research and reporting: that our results are accompanied by the data and code needed to produce them.
 
-One of the powerful aspects of R Markdown is that you can incorporate your analysis and output in R (or other languages) directly into your reporting. One of the ways this is achieved is through code 'chunks' containing R code.
+One of the powerful aspects of R markdown is that you can incorporate your analysis and output in R (or other languages) directly into your reporting. One of the ways this is achieved is through code 'chunks' containing R code.
 
 Code chunks look like this:
 
@@ -100,11 +112,11 @@ y <- 2*x + rnorm(100)
 ```
 
 
-When you process the R Markdown document, each of the code chunks will be evaluated, and then the code and/or output will be inserted (unless you suppress one or both with chunk options). If the code produces a figure, that figure will be inserted.
+When you process the R markdown document, each of the code chunks will be evaluated, and then the code and/or output will be inserted (unless you suppress one or both with chunk options). If the code produces a figure, that figure will be inserted.
 
 It’s usually best to give each code chunk a name, like ``rat_graph`` and ``RTC_table``. The name is optional; if included, each code chunk needs a distinct name. The advantage of giving each chunk a name is that it will be easier to understand where to look for errors, should they occur. Also, any figures or tables that are created will be given names based on the name of the code chunk that produced them.
 
-An R Markdown document will have often have many code chunks. They are evaluated in order, in a single R session, and the state of the various variables in one code chunk are preserved in future chunks.
+An R markdown document will have often have many code chunks. They are evaluated in order, in a single R session, and the state of the various variables in one code chunk are preserved in future chunks.
 
 #####In-line code
 
@@ -112,7 +124,12 @@ The other way of incorporating R code directly into your reporting is through 'i
 
 In-line code is used for incorporating numbers derived from data directly into your writing. Thus, your report should never explicitly include numbers that are derived from the data. Don’t write “There are 168 individuals.” Rather, insert a bit of code that, when evaluated, gives the number of individuals.
 
-R markdown enables this through using R code directly in your text. Code results can be inserted directly into the text of a ``.Rmd`` file by enclosing the code with `r`. 
+In R markdown, in-line code is indicated with `` `r`` and `` ` ``. The bit of R code between them is evaluated and the result inserted.
+
+R markdown enables this through using R code directly in your text. Code results can be inserted directly into the text of a ``.Rmd`` file by enclosing the code with: 
+```{r, eval = FALSE, include = TRUE} 
+`r code_here`  
+``` 
 
 To write "there are 168 individuals" using in-line code you would do this:
 
@@ -127,13 +144,9 @@ Another example:
 The estimated correlation between x and y was `r cor(x,y)`.
 ```
 
-In R Markdown, in-line code is indicated with `` `r`` and `` ` ``. The bit of R code between them is evaluated and the result inserted.
-
-R Markdown will display the results of in-line code, but not the code itself. In-line code is used to insert information in your document where needed to enable easy updating of the document when new data becomes available. 
+R markdown will display the results of in-line code, but not the code itself. In-line code is used to insert information in your document where needed to enable easy updating of the document when new data becomes available. 
 
 ####Markdown basics
-
-The following is a brief introduction to some of the basics of writing and producing tables and figures in R Markdown. For more detailed documentation download and use the [R Markdown cheatsheet](https://www.rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf) and [R Markdown reference guide](https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf).
 
 #####Writing text
 
@@ -143,11 +156,11 @@ To make text **bold** use 2 ``**`` either side of your text (``**bold**``).
 
 To make _italics_ use '_' either side of the text you want ``_italicized_``.
 
-See the [R Markdown cheatsheet](https://www.rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf) for instructions for other aspects of writing such as creating bullet points etc.
+See the [R markdown cheatsheet](https://www.rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf) for instructions for other aspects of writing such as creating bullet points etc.
 
 #####Tables
 
-Making and displaying tables in R Markdown is really easy. If working with data and wanting to display a table we can use the ``kable`` function from the ``knitr`` package like this:
+Making and displaying tables in R markdown is really easy. If working with data and wanting to display a table we can use the ``kable`` function from the ``knitr`` package like this:
 
 ```{r kable table, warning=FALSE, message=FALSE}
 
@@ -249,7 +262,7 @@ Table: (\#tab:markdowntable) A table about some sort of flower
 
 When writing a report in Microsoft Word or similar and you want to display graphs and figures you have to generally copy and paste plots manually into your document. This lends itself to making mistakes and becomes tedious when your data/presentation changes. 
 
-Using R Markdown, R (or other language) and ``knitr`` it is really easy to place your figure in your work exactly where you want it to go. If your data changes then it is as simple as ensuring your new data is called to update your figure. Figure \@ref(fig:flowers) tells us simple things about the ``iris`` dataset.
+Using R markdown, R (or other language) and ``knitr`` it is really easy to place your figure in your work exactly where you want it to go. If your data changes then it is as simple as ensuring your new data is called to update your figure. Figure \@ref(fig:flowers) tells us simple things about the ``iris`` dataset.
 
 ```{r flowers, warning=FALSE, message=FALSE, fig.cap= 'Something to do with flowers', fig.height=3,fig.width=5}
 
@@ -259,7 +272,7 @@ plot(iris)
 
 #####References and citations
 
-R Markdown will automatically produce a bibliography from in-line citations. By default the ``DocRR`` package uses ``bibtex`` citations as the default format. When a template is saved a ``.bib`` file is automatically added to the folder structure. This can be thought of as a reference database much like Endnote or Mendeley, indeed Endnote/Mendeley libraries can usually be exported to ``bibtex``. Each reference cited needs to have an entry in the ``.bib`` file. An easy way to get the ``bibtex`` format for citations is to use [google scholar](https://scholar.google.co.nz/). Search for an article, click on 'Cite' then click on 'BibTeX' (Figure \@ref(fig:googlescholar)). Copy and paste the result into your ``.bib`` file.
+R markdown will automatically produce a bibliography from in-line citations. By default the ``DocRR`` package uses ``bibtex`` citations as the default format. When a template is saved a ``.bib`` file is automatically added to the folder structure. This can be thought of as a reference database much like Endnote or Mendeley, indeed Endnote/Mendeley libraries can usually be exported to ``bibtex``. Each reference cited needs to have an entry in the ``.bib`` file. An easy way to get the ``bibtex`` format for citations is to use [google scholar](https://scholar.google.co.nz/). Search for an article, click on 'Cite' then click on 'BibTeX' (Figure \@ref(fig:googlescholar)). Copy and paste the result into your ``.bib`` file.
 
 ```{r googlescholar, fig.cap = "The 'Cite' dialog box in Google Scholar.",echo=FALSE}
 knitr::include_graphics("images/googlescholar.png")
@@ -286,20 +299,18 @@ When you cite something using the ``@`` symbol and the citation identifier i.e. 
 
 #####Custom templates
 
-It is possible to create custom made templates for PDF and HTML documents in R Markdown. Using a custom made template means the author can produce a fully reproducible document using the correct styling for your organisation.
+It is possible to create custom made templates for PDF and HTML documents in R markdown. Using a custom made template means the author can produce a fully reproducible document using the correct styling for your organisation.
 
-The ``DocRR`` package contains templates for reproducible reporting for the New Zealand Department of Conservation (DOC). The following sections will get you started with the package and walk you through producing PDF and HTML documents from R Markdown. 
+The ``DocRR`` package contains templates for reproducible reporting for the New Zealand Department of Conservation (DOC). The following sections will get you started with the package and walk you through producing PDF and HTML documents from R markdown. 
 
 ###DocRR package
 
+####DocRR package
+
 ``DocRR`` stands for 'DOC Reproducible Reporting' as the ``DocRR`` package has been made to enable DOC staff to produce high quality documents in PDF and HTML formats which can be easily updated and reproduced. Using ``DocRR`` templates means there is no need to bother with manual formatting of Microsoft Word documents or copying and pasting of graphs and figures. 
 
-####Getting started
 
-
-In order for PDF output to work you need to make sure you have a LaTeX distribution installed. [MiKTEX](https://miktex.org/) is the most common distribution to use.
-
-####Installing the package
+#####Installing the package
 
 
 First off install the ``devtools`` package if you haven't already.
@@ -318,7 +329,7 @@ devtools::install_github('ogansell/DocRR')
 
 ````
 
-####Creating a template in RStudio
+#####Creating a template in RStudio
 
 
 R Studio supports these templates natively. You can download R Studio [here](https://www.rstudio.com/products/rstudio/download/). 
@@ -361,7 +372,7 @@ knitr::include_graphics("images/rmarkdown8.bmp")
 ```
 
 
-####After installation
+#####After installation
 
 
 When making PDF or HTML documents a common intermediate step is to ``knit`` your document to ``.docx`` format. This makes it easy to send to reviewers to get their input. The [webshot](https://cran.r-project.org/web/packages/webshot/vignettes/intro.html) package is useful in this instance as it includes a screenshot of any html widgets used in the knitted ``.docx`` file. It requires installation of the PhantomJS software. This causes installation of the ``DocRR`` package to fail on older installations of R so it is recommended to install this manually after installing ``DocRR``. Do this by running the code:
@@ -371,13 +382,13 @@ webshot::install_phantomjs()
 ```
 
 
-####Creating a template outside of RStudio
+#####Creating a template outside of RStudio
 
 If you're not using R Studio it's still easy to use these templates in base R.
 
 Wrapper functions have been made to make it easy to load a template.
 
-There is one function for each template. The document names are examples only, you can name the ``".Rmd"`` file whatever you like.
+There is one function for each template. The document names are examples only, you can name the ``.Rmd`` file whatever you like.
 
 Functions below:
 
@@ -396,11 +407,11 @@ rmarkdown::render("my_article/my_article.Rmd")
 
 ``` 
 
-Remember that you need to point it to the right directory, which means you need to include the folder which was automatically created to host your ``".Rmd"`` file.
+Remember that you need to point it to the right directory, which means you need to include the folder which was automatically created to host your ``.Rmd`` file.
 
-####Extra information
+#####Extra information
 
-You can now start making documents using these templates. It's important to remember that each template has been designed for a specific output (i.e. PDF articles or reports, plain webpages, web pages with tabbed layout or standardised pages for reporting on biodiversity indicators). Therefore the ``docarticle`` or ``docreport`` templates won't work for making webpages and HTML templates won't work for generating PDF documents. Saying that, all of the templates will output to ``.docx`` (word format) provided some of the YAML metadata is altered (we'll cover this later). This is useful for giving reviewers who aren't familiar with R or R Markdown a version of your document for editing and making comments. 
+You can now start making documents using these templates. It's important to remember that each template has been designed for a specific output (i.e. PDF articles or reports, plain webpages, web pages with tabbed layout or standardised pages for reporting on biodiversity indicators). Therefore the ``docarticle`` or ``docreport`` templates won't work for making webpages and HTML templates won't work for generating PDF documents. Saying that, all of the templates will output to ``.docx`` (word format) provided some of the YAML metadata is altered (we'll cover this later). This is useful for giving reviewers who aren't familiar with R or R markdown a version of your document for editing and making comments. 
 
 You'll see there are 2 versions of the article and report PDF templates (i.e. ``docarticle`` and ``docarticle_bookdown``). The ``bookdown`` package adds the extra utility of cross referencing tables and figures in text. This is especially handy for scientific/technical publications with lots of tables and graphs, but is also useful for images etc. 
 
@@ -511,7 +522,7 @@ Changing colours in PDF or HTML documents normally requires some working knowled
 
 ####PDF output
 
-Producing a PDF document from R Markdown requires LaTeX be installed on your computer.As above, we recommend [MiKTEX](https://miktex.org/). Knitting to PDF can be a bit tricky at first. Behind the scenes a programme called ``pandoc`` is converting your ``.Rmd`` document into a LaTeX document. LaTeX requires packages of it's own to do various tasks involved in producing the document. To get started you will need to ensure that MiKTEX can access it's package repository through the DOC proxy server.
+Producing a PDF document from R markdown requires LaTeX be installed on your computer. As above, we recommend [MiKTEX](https://miktex.org/). Knitting to PDF can be a bit tricky at first. Behind the scenes a programme called ``pandoc`` is converting your ``.Rmd`` document into a LaTeX document. LaTeX requires packages of it's own to do various tasks involved in producing the document. To get started you will need to ensure that MiKTEX can access it's package repository through the DOC proxy server.
 
 If you've got MiKTEX installed search for and open the ``MiKTEX Package Manager`` in your program files (Figure \@ref(fig:miktex)).
 
@@ -536,7 +547,7 @@ Add a tick to 'Use a proxy server' and add ``webproxy`` to the ``Address:`` box 
 knitr::include_graphics("images/connectionsettings.jpg")
 ```
 
-Now you're ready to start working on a document templates. Follow the instructions under the [Getting started](#getting-started) to open one of the PDF templates ``docarticle`` or ``docreport`` or one of the ``bookdown`` versions. 
+Now you're ready to start working on a document templates. Follow the instructions under the [DocRR package](#docrr-package) section to open one of the PDF templates ``docarticle`` or ``docreport`` or one of the ``bookdown`` versions. 
 
 Figure \@ref(fig:yaml) shows one of the templates to produce a PDF document. All of the text between the ``---`` lines is known as YAML. YAML was mentioned previously and is essentially the document metadata and tells ``pandoc`` and therefore LaTeX everything it needs to know to produce the document. Don't worry too much about how it works.  
 
@@ -582,7 +593,7 @@ from one of the colour options in Table \@ref(tab:colours). Make sure not to cha
 
 Now have a play with changing your colours and font size for titles and subtitles. If you have a really long title or subtitle it can push the  location of the author and date down the page. The best approach to manage this is to change the font size of your title and subtitle as needed to control how it influences the overall layout.
 
-####Knitting to PDF
+#####Knitting to PDF
 
 When you first knit to PDF ``pandoc`` converts the ``.Rmd`` document into a ``.tex`` LaTeX document which is then compiled to make a PDF article or report. As mentioned before, LaTeX uses packages to help carry out various tasks involved in compiling a document. When you first start making PDF documents MiKTEX will need to download and install the necessary packages. You'll need to approve each download or untick the box. 
 
