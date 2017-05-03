@@ -190,9 +190,11 @@ $for(header-includes)$
 $header-includes$
 $endfor$
 
+
 %%% Use protect on footnotes to avoid problems with footnotes in titles
 \let\rmarkdownfootnote\footnote%
 \def\footnote{\protect\rmarkdownfootnote}
+
 
 %%Define colors for use
 \definecolor{Fauna}{RGB}{221,89,0}
@@ -202,10 +204,8 @@ $endfor$
 \definecolor{Flora}{RGB}{186,216,10}
 \definecolor{Kiwi}{RGB}{109,44,0}
 \definecolor{Honey}{RGB}{181,168,12}
-\definecolor{Tuatara}{RGB}{235,229,228}
-\definecolor{Grey}{RGB}{128,128,128}
 
-\usepackage[a4paper]{geometry}
+%Commands to enable landscape mode in rmarkdown and color commands for headings
 \usepackage{pdflscape}
 \usepackage{sectsty}
 \usepackage{multirow}
@@ -216,12 +216,9 @@ $endfor$
 \subsubsectionfont{\mycolor}
 \chapterfont{\mycolor}
 
-
-
-
 %%% Change title format to be more compact
 \usepackage{titling}
-
+\usepackage{hyperref}
 % Create subtitle command for use in maketitle
 \newcommand{\subtitle}[1]{
   \posttitle{
@@ -229,89 +226,66 @@ $endfor$
     }
 }
 
-
-
-%maketitle commands
-
 \setlength{\droptitle}{-2em}
 $if(title)$
-\title{\color{white}$title$}
-\pretitle{\vspace{-12cm}\flushleft}
-\posttitle{\vspace{2cm}\par}
+  \title{\color{white}$title$}
+  \pretitle{\vspace{-4.75cm}\flushleft}
+  \posttitle{\vspace{2cm}\par}
 $else$
-\title{\color{white}}
-\pretitle{\vspace{-12cm}}
-\posttitle{\vspace{2cm}}
+  \title{\color{white}}
+  \pretitle{\vspace{-4.75cm}}
+  \posttitle{\vspace{2cm}}
 $endif$
 $if(subtitle)$
 \subtitle{\flushleft{$subtitle$}}
 $endif$
 $if(author)$
-\author{$for(author)$$author$$sep$ \\ $endfor$}
-\preauthor{\vspace{6cm}\flushleft\large\emph}
-\postauthor{\par}
+  \author{$for(author)$$author$$sep$ \\ $endfor$}
+  \preauthor{\vspace{2cm}\flushleft\large\emph}
+  \postauthor{\par}
 $else$
-\author{}
-\preauthor{\vspace{6cm}}\postauthor{}
+  \author{}
+  \preauthor{\vspace{2cm}}\postauthor{}
 $endif$
 $if(date)$
-\predate{\flushleft\large\emph}
-\postdate{\par}
-\date{$date$}
+  \predate{\flushleft\large\emph}
+  \postdate{\par}
+  \date{$date$}
 $else$
-\date{}
-\predate{}\postdate{}
+  \date{}
+  \predate{}\postdate{}
 $endif$
 
+\usepackage{sectsty}% http://ctan.org/pkg/sectsty
 \usepackage{xcolor}% http://ctan.org/pkg/xcolor
 \usepackage{color}
-\usepackage{epstopdf}
-\usepackage{pagecolor}
-\usepackage{afterpage}
-\usepackage{datetime}
+
 
 \begin{document}
-
-%Adds the DOC logo and flax image to the bottom of the page
-\ThisURCornerWallPaper{0.12}{"images/DOC_split_logo_shield.png"}
-\ThisLLCornerWallPaper{0.2}{"images/newzealand_government_w_padding.png"}
-\ThisLRCornerWallPaper{0.2}{"images/DOC_split_logo_text_w_padding.png"}
-\pagecolor{Tuatara}
 $if(title)$
 \maketitle
 $endif$
 
+$if(abstract)$
+\begin{abstract}
+$abstract$
+\end{abstract}
+$endif$
+
+%Adds the DOC logo and flax image to the bottom of the page
+\ThisLRCornerWallPaper{0.2}{"DOC_split_logo_text_w_padding.png"}
+\ThisURCornerWallPaper{0.12}{"DOC_split_logo_shield.png"}
 $for(include-before)$
 $include-before$
 
 $endfor$
-\newpage
-
-\pagecolor{white}
-
-\newdateformat{monthyeardate}{%
-	\monthname[\THEMONTH] \THEYEAR}
-
-
-\vspace*{\fill}
-Cover image credit (if applicable)
-©  Copyright \monthyeardate\today, New Zealand Department of Conservation
-
-ISSN	(if applicable)
-ISBN	(if applicable)
-
-Publisher details
-
-In the interest of forest conservation, we support paperless electronic publishing.
-\clearpage
-
 $if(toc)$
 {
 $if(colorlinks)$
 \hypersetup{linkcolor=$if(toccolor)$$toccolor$$else$black$endif$}
 $endif$
 \setcounter{tocdepth}{$toc-depth$}
-\tableofcontents{\sectionfont{\mycolor}
+\tableofcontents
 }
 $endif$
 $if(lot)$
