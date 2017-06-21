@@ -1,0 +1,3 @@
+name: DOC HTML iframe
+description: Template for DOC html output intended to be hosted on the DOC website in an iframe.
+create_dir: true
