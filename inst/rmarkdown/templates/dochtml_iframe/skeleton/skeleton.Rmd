@@ -74,6 +74,7 @@ Subtitle of measure or case study of species
 #add necessary packages here
 require(plotly)
 require(htmlwidgets)
+require(DT)
 
 ```
 
@@ -108,7 +109,27 @@ plot_ly(d, x = ~carat, y = ~price, color = ~carat,
 
 
 <!-- An alternative way of adding captions. Only use if captions not working for some htmlwidgets. Otherwise delete. -->
-<p class="caption" align = "middle" id = "Figure 1."> Figure \@ref(fig:plot). Interesting things about diamonds</p>
+<p class="caption" align = "left" id = "Figure 1."> Figure \@ref(fig:plot). Interesting things about diamonds</p>
+
+Using this template we need to make sure that tables follow the 'stripeytables' class defined in the DOC css.
+
+We do this by adding ``class = 'stripeytables'`` when we produce a table using either the ``knitr::kable`` or ``DT::datatable`` functions. Examples below in Tables \@ref(tab:iristab) and Table [2](irisDT1):
+
+```{r iristab, warning=FALSE,message=FALSE,echo=FALSE}
+
+knitr::kable(head(iris,15) , "html", table.attr='class="stripeytable"', caption = "The first 15 rows of the iris dataset.")
+
+```
+
+<!-- Cross-referencing doesn't work properly for DT tables so we need to make a hack.Add caption below then link to table section at next step.-->
+<p class="caption" align = "left"> <span style="font-weight:bold">Table 2. The first 15 rows of the iris dataset in a DT table.</span></p>
+<!--This creates a linkn to the place where the table sites.-->
+######{#irisDT1} 
+```{r irisDT,warning=FALSE,message=FALSE,echo=FALSE, fig.cap=""}
+DT::datatable(head(iris,15), class = "stripeytable", rownames = FALSE,
+    option=list(columnDefs=list(list(targets=1:4, class="dt-right"))))#'targets=1:4' needs to be adjusted depending on the data presented 
+```
+
 
 ##Definition and methodology
 
