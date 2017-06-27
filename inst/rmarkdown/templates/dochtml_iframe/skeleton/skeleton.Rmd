@@ -78,6 +78,11 @@ require(DT)
 
 ```
 
+##Context
+
+Add a paragraph providing some context for the readers so it doesn't all seem completely silly.
+
+
 ## Key findings
 
 <p><b> Key findings in bold</b></p>
