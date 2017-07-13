@@ -54,6 +54,37 @@ html {
   background: #FF0000;
       }
 
+/* css to control leaflet styling below */
+
+/* makes the map legend show points - may need to delete if showing polygons*/
+.leaflet .legend i{
+            border-radius: 50%;
+            width:10px;
+            height: 10px;
+            margin-top: 4px;
+         }
+
+/* changes font and background colour of legend pane*/       
+.info {
+      font-size: 16pt; 
+      font-family: Archer;
+      background: rgba(255,255,255,0.5);
+      }  
+/* changes font and background colour of options pane*/      
+.leaflet-control-layers-expanded{
+            display: block;
+            position: relative;
+            font-family: Archer;
+            background: rgba(255,255,255,0.5);
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+            border-radius: 5px;
+          }
+/* changes font of popup labels*/            
+.leaflet-label {
+    font-size: 30pt; 
+    font-family: Archer;
+}
+
 </style>
 <!--Customise header here-->
 <header>
@@ -85,7 +116,7 @@ Add a paragraph providing some context for the readers so it doesn't all seem co
 
 ## Key findings
 
-<p><b> Key findings in bold</b></p>
+__Key findings in bold__
 
 * A bullet point
 * And another 
