@@ -157,10 +157,8 @@ knitr::kable(head(iris,15) , "html", table.attr='class="stripeytable"', caption 
 
 ```
 
-<!-- Cross-referencing doesn't work properly for DT tables so we need to make a hack.Add caption below then link to table section at next step.-->
-<p class="caption" align = "left"> <span style="font-weight:bold">Table 2. The first 15 rows of the iris dataset in a DT table.</span></p>
-<!--This creates a linkn to the place where the table sites.-->
-######{#irisDT1} 
+<!-- Cross-referencing doesn't work properly for DT tables so we need to make a hack.Add caption below and add label '(\#tab:irisDT)' at the start of the caption description.-->
+<p class="caption" align = "left"> <span style="font-weight:bold">(\#tab:irisDT)Table 2. The first 15 rows of the iris dataset in a DT table.</span></p>
 ```{r irisDT,warning=FALSE,message=FALSE,echo=FALSE, fig.cap=""}
 DT::datatable(head(iris,15), class = "stripeytable", rownames = FALSE,
     option=list(columnDefs=list(list(targets=1:4, class="dt-right"))))#'targets=1:4' needs to be adjusted depending on the data presented 
@@ -172,8 +170,9 @@ DT::datatable(head(iris,15), class = "stripeytable", rownames = FALSE,
 Describe the data and the methods
 
 ##Data quality
- 
-This measure is classified as a [case study](http://www.stats.govt.nz/browse_for_stats/environment/environmental-reporting-series/environmental-indicators/Home/About.aspx#topics{:target="_blank"}).
+
+<!-- Insert relevant qualified, i.e. nation indicator, case study, supporting information  -->
+This measure is classified as a <a href = http://www.stats.govt.nz/browse_for_stats/environment/environmental-reporting-series/environmental-indicators/Home/About.aspx#topics target="_blank">case study</a>.
 
 ##Relevance
 
