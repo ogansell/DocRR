@@ -230,7 +230,7 @@ $endfor$
 
 \setlength{\droptitle}{-2em}
 $if(title)$
-  \title{\color{white}$title$}
+  \title{\vspace{1cm} \color{white}$title$}
   \pretitle{\vspace{-4.75cm}\flushleft}
   \posttitle{\vspace{2cm}\par}
 $else$
@@ -262,6 +262,17 @@ $endif$
 \usepackage{xcolor}% http://ctan.org/pkg/xcolor
 \usepackage{color}
 
+\newenvironment{foldoutfloat}{%
+	\eject\pdfpageheight=29.7cm\pdfpagewidth=42cm
+	\newgeometry{margin=1in}
+	\textwidth=15in
+	\begin{table}[p]
+	}{%
+	\end{table}
+	\clearpage % otherwise it will float to another, non-resized page
+	\eject\pdfpageheight=11in\pdfpagewidth=8.5in
+	\restoregeometry
+}%
 
 \begin{document}
 $if(title)$
