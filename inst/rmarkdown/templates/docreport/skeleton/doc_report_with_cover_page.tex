@@ -235,32 +235,32 @@ $endfor$
 
 \setlength{\droptitle}{-2em}
 $if(title)$
-\title{\color{white}$title$}
-\pretitle{\vspace{-12cm}\flushleft}
-\posttitle{\vspace{2cm}\par}
+  \title{\vspace{2cm} \color{white}$title$}
+  \pretitle{\vspace{-12cm}\flushleft}
+  \posttitle{\vspace{2cm}\par}
 $else$
-\title{\color{white}}
-\pretitle{\vspace{-12cm}}
-\posttitle{\vspace{2cm}}
+  \title{\color{white}}
+  \pretitle{\vspace{-12cm}}
+  \posttitle{\vspace{2cm}}
 $endif$
 $if(subtitle)$
 \subtitle{\flushleft{$subtitle$}}
 $endif$
 $if(author)$
-\author{$for(author)$$author$$sep$ \\ $endfor$}
-\preauthor{\vspace{6cm}\flushleft\large\emph}
-\postauthor{\par}
+  \author{$for(author)$$author$$sep$ \\ $endfor$}
+  \preauthor{\vspace{6cm}\flushleft\large\emph}
+  \postauthor{\par}
 $else$
-\author{}
-\preauthor{\vspace{6cm}}\postauthor{}
+  \author{}
+  \preauthor{\vspace{6cm}}\postauthor{}
 $endif$
 $if(date)$
-\predate{\flushleft\large\emph}
-\postdate{\par}
-\date{$date$}
+  \predate{\flushleft\large\emph}
+  \postdate{\par}
+  \date{$date$}
 $else$
-\date{}
-\predate{}\postdate{}
+  \date{}
+  \predate{}\postdate{}
 $endif$
 
 \usepackage{xcolor}% http://ctan.org/pkg/xcolor
